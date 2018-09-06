@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="col-md-3">
+      <%= render 'partial/verticalnavbar'%>
+  </div>
+
+  <div class="col-md-9">
+  	<%= form_for @photos, url: user_teams_path do |f| %>
+  		<%= f.attachment_field :photo, multiple: true %>
+  		<%= f.submit "更新", class: "btn btn-danger"%>
+  	<% end %>
+  </div>
+</div>

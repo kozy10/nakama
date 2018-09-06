@@ -18,6 +18,9 @@ gem "bootstrap-sass"
 gem "jquery-rails"
 gem 'jquery-ui-rails'
 gem 'rails-ujs', '~> 5.1.0.beta1'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_012321) do
+ActiveRecord::Schema.define(version: 2018_09_06_033411) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,32 @@ ActiveRecord::Schema.define(version: 2018_09_05_012321) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "team_photos", force: :cascade do |t|
+    t.integer "team_id"
+    t.string "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "establishment_year"
+    t.string "address"
+    t.string "practice_day"
+    t.time "practice_start_time"
+    t.time "practice_end_time"
+    t.string "number_of_members"
+    t.string "age_bracket"
+    t.string "homepage"
+    t.text "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "organizer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sports_name"
   end
 
   create_table "users", force: :cascade do |t|

@@ -13,5 +13,14 @@ Rails.application.routes.draw do
 	  registrations: 'user/users/registrations'
 	}
 
+	namespace :user, path: 'user' do
+		resources :teams do 
+			resources :photos 
+		end
+		get 'manage-team/:id/basics' => 'teams#basics', as: 'manage_team_basics'
+		get 'manage-team/:id/address' => 'teams#address', as: 'manage_team_address'
+		get 'manage-team/:id/photo' => 'photos#new', as: 'manage_team_photo'
+	end
+
 	
 end

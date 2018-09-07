@@ -3,7 +3,7 @@
   <head>
     <title>Nakama</title>
     
-    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <%= csrf_meta_tags %>
@@ -11,9 +11,9 @@
   </head>
 
   <body>
-      
+      <%= render 'partial/pageheader' %>
     <%= yield %>
       <%= render 'partial/footer' %>
-  <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'user/user', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

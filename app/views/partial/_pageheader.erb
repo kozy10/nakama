@@ -40,32 +40,4 @@
   </nav>
 </header>
 
-<script>
-function init() {
 
-  var input = /** @type {!HTMLInputElement} */(
-      document.getElementById('top-search-form'));
-
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  
-  autocomplete.addListener('place_changed', function() {
-
-    var place = autocomplete.getPlace();
-    var lat = place.geometry.location.lat();
-    var lng = place.geometry.location.lng();
-
-    document.getElementById('lat').value = lat ;
-    document.getElementById('lng').value = lng ;
-
-    if (!place.geometry) {
-      window.alert("Autocomplete's returned place contains no geometry");
-      return;
-    }
-
-  });
-}
-
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC6HeRNgfz2k11k0i6NRiVSpa_egGxdwkg&libraries=places&callback=init">
-</script>

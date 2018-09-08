@@ -15,6 +15,10 @@ class User::TeamsController < User::UserBase
 		redirect_to user_manage_team_basics_path(@team)
 	end
 
+	def show
+		@team = Team.find(params[:id])
+	end
+
 	def update
     @team.update(team_params)
     redirect_back(fallback_location: root_path)

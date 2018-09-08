@@ -7,6 +7,70 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.teams{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teams .practice-box {
+  flex: 0 0 100%;
+  position: relative;
+  
+}
+.teams .practice-box::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.teams .practice-box div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.teams .practice:nth-child(even) div {
+  background: #eee;
+}
+
+
+.teams .team-box {
+  flex: 0 0 28%;
+  position: relative;
+  margin: 20px 20px 50px 20px ;
+}
+.teams .team-box::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.teams .team-box div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.teams .team-box:nth-child(even) div {
+  background: #eee;
+}
+.bg-white {
+  background-color: white;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.pic-box {
+  height: 400px;
+}
+
+.practice-box {
+  height: 200px;
+}
+
 .navbar-header {
   float:none;
   line-height: 70px;

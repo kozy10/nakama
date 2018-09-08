@@ -2,7 +2,7 @@
 <div class="container">
   <div class="col-md-6">
     <% @arrteams.each do |team| %>
-      <%= team.name %>
+      <%= link_to team.name, user_team_path(team) %>
     <% end %>
   </div>
 

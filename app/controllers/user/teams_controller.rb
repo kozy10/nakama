@@ -1,7 +1,7 @@
 class User::TeamsController < User::UserBase
 	before_action :set_team, only: [:show, :update, :basics, :address, :photo]
 	def index
-		@teams = Team.all
+		@teams = Team.where(organizer_id: current_user.id)
 	end
 
 	def new
@@ -17,6 +17,7 @@ class User::TeamsController < User::UserBase
 
 	def show
 		@team = Team.find(params[:id])
+		@organizer = User.find(@team.organizer_id)
 	end
 
 	def update

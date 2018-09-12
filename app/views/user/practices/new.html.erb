@@ -1,0 +1,60 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="text-center">
+            <span style="font-size:24px;">新しい練習を投稿する</span>
+          </div>
+        </div>
+
+        <div class="panel-body">         
+          <%= form_for @practice, url: user_team_practices_path do |f| %>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th style="width: 35%">タイトル</th>
+                  <td><%= f.text_field :title, class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <th style="width: 35%">開始時刻</th>
+                  <td><%= f.datetime_select :start_time, class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <th style="width: 35%">終了時刻</th>
+                  <td><%= f.time_select :end_time, class: "form-control" %></td>
+                </tr>
+
+                <tr>
+                  <th style="width: 35%">返答期限</th>
+                  <td><%= f.datetime_select :reply_deadline, class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <th style="width: 35%">場所</th>
+                  <td><%= f.text_field :location, class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <th style="width: 35%">制限人数</th>
+                  <td><%= f.number_field :limited_participants, class: "form-control number-field" %>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <th style="width: 35%">説明</th>
+                  <td><%= f.text_area :description, rows: 10, class: "form-control" %></td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <br>
+        
+            <div class="actions">
+                <%= f.submit "更新", class: "btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

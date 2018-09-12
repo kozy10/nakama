@@ -2,10 +2,10 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header row">
-        <a class="navbar-brand" href="/">Brand</a>
+        <a class="navbar-brand" href="/">nakama</a>
         <div class="navbar-left col-xs-6 col-md-6">
           <%= form_tag user_search_path, method: :get do %>
-            <%= text_field_tag :search, params[:search], placeholder: "住所を入力", class: "form-control",id:"top-search-form" %>
+            <%= text_field_tag :search, params[:search], placeholder: "住所を入力して近くのチームを探す", class: "form-control",id:"top-search-form" %>
             <%= hidden_field_tag :lat %>
             <%= hidden_field_tag :lng %>
           <% end %>
@@ -25,13 +25,30 @@
               <!-- ログインしていない時 -->
               <li><%= link_to "アカウント作成", new_user_registration_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>
-              <li class="dropdown"></li>
             <% else %>
               <!-- ログインしている時 -->
               <li>メッセージ</li>
               <li>通知</li>
-              <li><%= link_to "チームを作る", new_user_team_path %></li>
-              <li>マイページ</li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  チーム
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "チームを管理する", user_manages_path %></li>
+                  <li><%= link_to "チームを作る", new_user_team_path %></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
             <% end %>
           </ul>
         </div>

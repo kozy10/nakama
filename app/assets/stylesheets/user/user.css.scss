@@ -7,6 +7,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
+.practice h3 {
+  margin-top: 0px;
+}
+
+.practice-pic-box {
+  height: 100px;
+}
+
+textarea {
+  resize: none;
+}
+
+td .number-field {
+  width: 70px;
+}
+
+
 .teams{
   display: flex;
   flex-wrap: wrap;

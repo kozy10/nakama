@@ -5,7 +5,7 @@
     
     <%= stylesheet_link_tag    'user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
+    <%= javascript_include_tag 'user/user', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
 
   </head>
@@ -14,6 +14,6 @@
       <%= render 'partial/header' %>
     <%= yield %>
       <%= render 'partial/footer' %>
-  <%= javascript_include_tag 'user/user', 'data-turbolinks-track': 'reload' %>
+  
   </body>
 </html>

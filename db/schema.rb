@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_033411) do
+ActiveRecord::Schema.define(version: 2018_09_11_044301) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,39 @@ ActiveRecord::Schema.define(version: 2018_09_06_033411) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "latest_message_at"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "conversation_id"
+    t.integer "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "practices", force: :cascade do |t|
+    t.integer "team_id"
+    t.string "title"
+    t.time "date"
+    t.datetime "start_time"
+    t.time "end_time"
+    t.text "description"
+    t.string "location"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "limited_participants"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "reply_deadline"
   end
 
   create_table "team_photos", force: :cascade do |t|
@@ -58,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_033411) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

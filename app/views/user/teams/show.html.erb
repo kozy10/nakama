@@ -9,10 +9,13 @@
 			</div>
 			<div class="row">
 				<h4>スポーツ: <%= @team.sports_name %></h4>
-				<h4>活動場所: 上青木中（住所）</h4>
+				<h4>活動場所: <%= @team.address %></h4>
+				<h4>管理者: <%= @organizer.name %>
 			</div>
 			<div class=" row d-flex align-items-end">
-				<h3 class="btn btn-success btn-lg pull-right">質問する</h3>
+				<h3 class="pull-right">
+					<%= link_to "メッセージを送る", user_conversations_path(sender_id: current_user.id, recipient_id: @team.organizer_id), method: 'post', class: "btn btn-success btn-lg" %>
+					</h3>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,35 @@
+
+
+<div class="container"> 
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:18px;">チーム一覧</span>
+        </div>
+      </div>
+      <ul class="ul-unstyled">
+        <% @teams.each do |team| %>
+          <li class="panel-body">
+            <div class="row-table">
+              <div class="col-md-3 col-sm-3 col-middle row-space-2">
+                <div class="panel-list-img text-center">
+                  <p>写真</p>
+                </div>
+              </div>
+
+              <div class="col-sm-7 col-lg-7 col-middle row-space-2">
+                <span class="team-title"><%= team.name %></span>
+              </div>
+
+              <div class="col-md-3 col-sm-3 col-middle row-space-1">
+                <%= link_to "管理する", user_manage_path(team), class: "btn btn-success pull-right" %>
+              </div>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

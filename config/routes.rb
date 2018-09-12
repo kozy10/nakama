@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 	namespace :user, path: 'user' do
 		resources :teams do 
 			resources :photos 
+			resources :practices
+		end
+		resources :manages
+		resources :conversations do
+			resources :messages
 		end
 		get 'manage-team/:id/basics' => 'teams#basics', as: 'manage_team_basics'
 		get 'manage-team/:id/address' => 'teams#address', as: 'manage_team_address'

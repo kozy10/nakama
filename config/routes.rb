@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 	namespace :user, path: 'user' do
 		resources :teams do 
 			resources :photos 
-			resources :practices
+			resources :practices do
+				resources :participants 
+			end
 		end
 		resources :manages
 		resources :conversations do

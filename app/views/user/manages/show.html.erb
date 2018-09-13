@@ -13,7 +13,7 @@
 				    <%= link_to "練習一覧", user_team_practices_path(@team), class: "pull-right", :style => "color:teal;" %>
 			    </div>
 			    <div class="panel-body practice">
-			    	<% if !@practice.nil? %>
+			    	<% if @practice %>
 			    		<div class="col-md-4">
 			    			<div class="practice-pic-box well"></div>
 			    		</div>
@@ -48,27 +48,32 @@
 				    <strong style="font-size:18px;">メッセージ</strong>
 			      <%= link_to "メッセージ一覧", user_conversations_path(@conversations), class: "pull-right", :style => "color:teal;" %>
 			    </div>
-			    <% @conversations.each do |conversation| %>
-		    		<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-		    		<% if !conversation.messages.blank? %>
-		    			<div class="panel-body">
-		    				<div class="row">
-			    				<div class="col-md-2 text-left img-circle">
-			    					<p>写真</p>
-			    				</div>
-			    				<div class="col-md-8">
-			    					<h5><%= other.name %></h5>
-			    					<%= conversation.messages.last.message_time %>
-			    					<%= link_to user_conversation_messages_path(conversation) do %>
-                      <%= conversation.messages.last.body %>
-                  	<% end %>
-			    				</div>
-			    			
-			    			</div>
-			    		</div>
-			    	<% end %>
-				  <% end %>
-				</div>
+			    <% if !@conversations.blank? %>
+				    <% @conversations.each do |conversation| %>
+			    		<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+			    			<div class="panel-body">
+			    				<div class="row">
+				    				<div class="col-md-2 text-left img-circle">
+				    					<p>写真</p>
+				    				</div>
+				    				<div class="col-md-8">
+				    					<h5><%= other.name %></h5>
+				    					<%= conversation.messages.last.message_time %>
+				    					<%= link_to user_conversation_messages_path(conversation) do %>
+	                      <%= conversation.messages.last.body %>
+	                  	<% end %>
+				    				</div>
+				    			</div>
+				    		</div>
+				    <% end %>
+			    <% else %>
+		    		<div class="panel-body">
+	    				<div class="row">
+		    				<p>メッセージはありません</p>
+		    			</div>
+		    		</div>
+			    <% end %>
+				</div> 
 
 			  <div class="panel panel-default">
 			    <div class="panel-heading">

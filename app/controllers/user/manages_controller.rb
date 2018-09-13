@@ -6,7 +6,7 @@ class User::ManagesController < User::UserBase
 
 	def show
 		@team = Team.find(params[:id])
-		@practice = Practice.where("start_time > ?", Time.now).order("date ASC").first
+		@practice = Practice.next(@team)
 		@conversations = Conversation.involving(current_user)
 	end
 

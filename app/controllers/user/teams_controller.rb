@@ -18,6 +18,7 @@ class User::TeamsController < User::UserBase
 	def show
 		@team = Team.find(params[:id])
 		@organizer = User.find(@team.organizer_id)
+		@practice = Practice.next(@team)
 	end
 
 	def update

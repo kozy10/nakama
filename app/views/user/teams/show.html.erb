@@ -24,7 +24,11 @@
 		<h4 class="pull-right">すべて見る</h4>
 	</div>
 	<div class="row">
-		<h1 class="practice-box well">練習</h1>
+		<% if @practice %>
+			<h1 class="practice-box well"><%= link_to "練習に参加する", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post' %></h1>
+		<% else %>
+			<h1 class="practice-box well">練習の予定はありません</h1>
+		<% end %>
 	</div>
 	<div class="row">
 		<div class="col-md-8">

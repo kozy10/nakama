@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_044301) do
+ActiveRecord::Schema.define(version: 2018_09_13_033605) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,10 +40,16 @@ ActiveRecord::Schema.define(version: 2018_09_11_044301) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.integer "practice_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "practices", force: :cascade do |t|
     t.integer "team_id"
     t.string "title"
-    t.time "date"
     t.datetime "start_time"
     t.time "end_time"
     t.text "description"
@@ -54,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_044301) do
     t.integer "limited_participants"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "reply_deadline"
+    t.datetime "reply_deadline"
   end
 
   create_table "team_photos", force: :cascade do |t|

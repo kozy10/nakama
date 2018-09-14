@@ -27,6 +27,7 @@
               <li><%= link_to "ログイン", new_user_session_path %></li>
             <% else %>
               <!-- ログインしている時 -->
+              <li><%= link_to "参加予定の練習", user_participants_path %></li>
               <li>メッセージ</li>
               <li>通知</li>
               <li class="dropdown">

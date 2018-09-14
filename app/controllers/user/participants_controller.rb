@@ -1,5 +1,9 @@
 class User::ParticipantsController < User::UserBase
 
+	def index
+		@practices = Practice.joins(:participants).where(participants: {user_id: current_user.id})
+	end
+
 	def create
 		@participant = current_user.participants.where(practice_id: params[:practice_id]).first
 		if @participant

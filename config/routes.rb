@@ -17,9 +17,10 @@ Rails.application.routes.draw do
 		resources :teams do 
 			resources :photos 
 			resources :practices do
-				resources :participants 
+				resources :participants, only: [:create]
 			end
 		end
+		resources :participants, only: [:index]
 		resources :manages
 		resources :conversations do
 			resources :messages

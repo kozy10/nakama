@@ -32,5 +32,7 @@ Rails.application.routes.draw do
 		get '/search' => 'pages#search'
 	end
 
-	
+	namespace :admin, path: 'admin' do
+		resources :sports
+	end
 end

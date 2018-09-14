@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    スポーツ一覧
+	    <%= link_to new_admin_sport_path, class: 'btn btn-success btn-sm float-right mb-0' do %>
+	      <i class="fa fa-plus">
+	      新規作成
+	      </i>
+	    <% end %>
+	  </div>
+	  <div class="panel-body">
+			<table class="table table-bordered table-sm table-hover">
+			  <thead>
+			    <tr class="table-secondary">
+			      <th class="text-right" style="width: 5%">ID</th>
+			      <th style="width:10%}">スポーツ名</th>
+			      <th></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @sports.each do |sport| %>
+			      <tr>
+			        <td><%= sport.id %></td>
+			        <td><%= sport.name %></td>
+			        <td>
+			          <%= link_to '編集', edit_admin_sport_path(sport) %>
+			          <span class="my-2">/</span>
+			          <%= link_to '削除', admin_sport_path(sport), method: :delete, data: {confirm: '削除してよろしいでしょうか？'} %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>

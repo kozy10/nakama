@@ -1,0 +1,22 @@
+
+
+	<%= form_for @sport, url: admin_sports_path do |f| %>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					ジャンル情報
+				</div>
+				<div class="panel-body">
+					<div class ="field">
+					  <%= f.label :スポーツ名 %><br>
+					  <%= f.text_field :name %><br>
+					</div>
+
+					<div class="float-right">
+						<%= f.submit '登録', class: 'btn btn-primary mr-2'%>
+						<%= link_to 'キャンセル', admin_sports_path, class: 'btn btn-light'%>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>

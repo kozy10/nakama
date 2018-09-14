@@ -36,7 +36,7 @@ class User::TeamsController < User::UserBase
 	private
   def team_params
     params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_start_time, :practice_end_time,
-    	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sports_name)
+    	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport)
   end
 
   def set_team

@@ -12,7 +12,7 @@
         <div class="panel-body">         
           <%= form_for @team, url: user_teams_path do |f| %>
             <div class="form-group row">
-              <%= f.label :sports_name, "スポーツの種類", class: "col-xs-3 col-form-label" %>
+              <%= f.label :sport_id, "スポーツの種類", class: "col-xs-3 col-form-label" %>
               <div class="col-xs-9">
                 <%= f.collection_select(:sport_id, Sport.all, :id, :name) %>
               </div>

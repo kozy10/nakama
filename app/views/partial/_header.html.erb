@@ -4,12 +4,29 @@
       <div class="navbar-header row">
         <a class="navbar-brand" href="/">nakama</a>
         <div class="navbar-left col-xs-6 col-md-6">
+
+<%
+=begin
+%>
+          <%= form_for @search_form, as: 'search', url: user_search_path, method: :get do |f| %>
+            <%= f.text_field :address, placeholder: "住所を入力して近くのチームを探す", class: "form-control",id:"top-search-form" %>
+            <%= f.hidden_field :lat %>
+            <%= f.hidden_field :lng %>
+            <%= f.collection_select(:sport_id, Sport.all, :id, :name, include_blank: true)%>
+          <% end %>
+<%
+=end
+%> 
+
+
           <%= form_tag user_search_path, method: :get do %>
             <%= text_field_tag :search, params[:search], placeholder: "住所を入力して近くのチームを探す", class: "form-control",id:"top-search-form" %>
             <%= hidden_field_tag :lat %>
             <%= hidden_field_tag :lng %>
-            
+            <%= select_tag :sport_id,options_from_collection_for_select(@sports, :id, :name) %>
           <% end %>
+
+
         </div>
 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

@@ -5,11 +5,11 @@
   </div>
 
   <div class="col-md-9">         
-    <%= form_for @team, url: user_teams_path do |f| %>
+    <%= form_for @team, url: user_team_path(@team) do |f| %>
       <div class="form-group row">
         <%= f.label :sports_name, "スポーツの種類", class: "col-xs-3 col-form-label" %>
         <div class="col-xs-9">
-          <%= f.select :sports_name, [["野球","野球"], ["サッカー","サッカー"], ["バレーボール","バレーボール"]], {prompt:"選択してください"}, required: 'true', autofocus: 'true'%>
+          <%= f.collection_select(:sport_id, Sport.all, :id, :name)%>
         </div>
       </div>
 

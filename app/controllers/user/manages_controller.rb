@@ -11,6 +11,7 @@ class User::ManagesController < User::UserBase
 	end
 
 	def update
+		@team = Team.find(params[:id])
     @team.update(team_params)
     redirect_back(fallback_location: root_path)
   end

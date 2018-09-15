@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 		get 'manage-team/:id/address' => 'teams#address', as: 'manage_team_address'
 		get 'manage-team/:id/photo' => 'photos#new', as: 'manage_team_photo'
 
-		get '/search' => 'pages#search'
+		get '/search' => 'teams#search'
 	end
 
 	namespace :admin, path: 'admin' do

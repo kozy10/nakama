@@ -23,6 +23,11 @@ gem "refile-mini_magick"
 gem 'geocoder'
 gem "private_pub"
 gem "thin"
+gem 'dropzonejs-rails'
+gem 'refile-s3'
+gem "paperclip", "~> 5.0.0.beta1"
+gem 'aws-sdk', '~> 2.3'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

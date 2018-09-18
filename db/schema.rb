@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_042533) do
+ActiveRecord::Schema.define(version: 2018_09_17_082230) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 2018_09_14_042533) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "practices", force: :cascade do |t|
     t.integer "team_id"
     t.string "title"
@@ -74,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_042533) do
     t.string "photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_id"
   end
 
   create_table "teams", force: :cascade do |t|

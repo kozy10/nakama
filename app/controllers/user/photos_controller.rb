@@ -1,36 +1,37 @@
 class User::PhotosController < User::UserBase
 
-	def new
-    @team = Team.find(params[:team_id])
-		@photos = TeamPhoto.new
-	end
-
-  def edit
-    @team = Team.find(params[:team_id])
-    @photos = TeamPhoto.find_by(team_id: @team.id)
-    if @photos.nil?
-      redirect_to new_user_team_photo_path
-    end
+  def create
+      @photo = Photo.new(photo_params)
+      if @photo.save
+          render json: { message: "success", photoId: @photo.id }, status: 200
+      else
+          render json: { error: @photo.errors.full_messages.join(", ") }, status: 400
+      end
   end
 
-  def update
-  end
-	
-	def create
-      @photos = TeamPhoto.new(photo_params)
-      @photos.save
+  def destroy
+      @photo = Photo.find(params[:id])
+      if @photo.destroy
+          render json: { message: "file deleted from server" }
+      else
+          render json: { message: @photo.errors.full_messages.join(", ") }
+      end
   end
 
   def list
-    team = Team.find(params[:team_id])
+      team = Team.find(params[:team_id])
 
-    photos = []
-    Photo.where(team_id: team.id).each do |photo|
-        new_photo = {
-            photo_id: photo.id,
-        }
-        photos.push(new_photo)
-    end
+      photos = []
+      Photo.where(team_id: team.id).each do |photo|
+          new_photo = {
+              id: photo.id,
+              name: photo.image_file_name,
+              size: photo.image_file_size,
+              src: photo.image
+          }
+          photos.push(new_photo)
+      end
+      render json: { images: photos }
   end
 
   private

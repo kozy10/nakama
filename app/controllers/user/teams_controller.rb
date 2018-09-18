@@ -51,7 +51,7 @@ class User::TeamsController < User::UserBase
 	end
 
 	def photo
-		@photo = TeamPhoto.new
+		@photo = Photo.new
 	end
 
 	private

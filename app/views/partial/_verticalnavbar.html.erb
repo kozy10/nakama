@@ -16,7 +16,7 @@
         </li>
         
         <li class="<%= 'active' if controller?("teams") && action?("photos") %>" id = "nav-photos">
-          <%= link_to "写真", edit_user_team_photo_path(@team) %>
+          <%= link_to "写真", user_manage_team_photo_path(@team) %>
         </li>
         
        

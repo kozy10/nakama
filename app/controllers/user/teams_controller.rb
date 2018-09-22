@@ -16,8 +16,8 @@ class User::TeamsController < User::UserBase
       @latitude = geolocation[0]
       @longitude = geolocation[1]
     end
-    @sports = Sport.all
-    @teams = Team.where(sport_id: params[:sport_id]).near(geolocation, 3, order: 'distance')
+    @teams = Team.near(geolocation, 3, order: 'distance')
+    @teams = Team.where(sport_id: params[:sport_id]) if params[:sport_id].present?
     @arrteams = @teams.to_a
   end
 
@@ -40,11 +40,16 @@ class User::TeamsController < User::UserBase
 		@team = Team.find(params[:id])
 		@organizer = User.find(@team.organizer_id)
 		@practice = Practice.next(@team)
+		impressionist(@team, nil, :unique => [:session_hash])
 	end
 
 	def update
     @team.update(team_params)
     redirect_back(fallback_location: root_path)
+  end
+
+  def basics
+  	@photo = Photo.new
   end
 
 	def address
@@ -60,7 +65,7 @@ class User::TeamsController < User::UserBase
 
   def team_params
     params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_start_time, :practice_end_time,
-    	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id)
+    	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image)
   end
 
   def set_team

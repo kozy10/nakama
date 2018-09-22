@@ -1,0 +1,10 @@
+<div class="container">
+	<% if @participant %>
+		<% @participants.each do |participant| %>
+		 <%= participant.user.name %>
+		<% end %>
+	<% else %>
+		<h4 class="text-center">現在、参加者はいません</h4>
+	<% end %>
+
+</div>

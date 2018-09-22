@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                   <th style="width: 35%">制限人数</th>
-                  <td><%= f.number_field :limited_participants, class: "form-control number-field" %>
+                  <td><%= f.number_field :limited_participants, min: 0, class: "form-control number-field" %>
                   </td>
                 </tr>
                 
@@ -49,8 +49,8 @@
             
             <br>
         
-            <div class="actions">
-                <%= f.submit "更新", class: "btn btn-danger" %>
+            <div class="actions text-center">
+                <%= f.submit "投稿", class: "btn btn-danger btn-lg" %>
             </div>
           <% end %>
         </div>

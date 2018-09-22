@@ -11,19 +11,15 @@
             </div>
 
             <div class="panel-body">          
-                <%= form_for @photo, url: user_photos_path, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %> 
-                    
+                <%= form_for @photo, url: user_photos_path, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %>
                     <%= f.hidden_field :team_id, value: @team.id %>
                     <div class="dz-message needsclick">
-                        <h3>ファイルをここにドロップしてください。</h3>
-                        <strong>アップロードするにはここをクリックしてください</strong>
+                        <h3>クリックして写真をアップロード</h3>
                     </div>
-                    
                     <div class="fallback">
                         <%= f.file_field :image %>
                         <%= f.submit "Upload image" %>
                     </div>
-
                 <% end %>
             </div>
         </div>

@@ -21,6 +21,8 @@ class User::MessagesController < User::UserBase
 
     if @message.save
       @conversation.update_attribute(:latest_message_at, Time.now)
+      @other = current_user == @conversation.sender ? @conversation.recipient : @conversation.sender
+      NotificationMailer.send_when_message(current_user, @other, @message).deliver
       redirect_to user_conversation_messages_path(@conversation)
     end
   end

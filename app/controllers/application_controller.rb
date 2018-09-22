@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	before_action :set_sports
+  include ApplicationHelper
 
 	def set_sports
 		@sports = Sport.all
 	end
+
 
 
   protected

@@ -43,7 +43,7 @@ function initMap() {
     marker.addListener('click', function() {
       
       
-      var content = "<div>" + '<a href="user/teams/' + <%= team.id %> +'">' + '<br>' + "<h5><%= team.name %></h5>" + "</a>" + "</div>";
+      var content = "<div>" + '<a href="teams/' + <%= team.id %> +'">' + '<br>' + "<h5><%= team.name %></h5>" + "</a>" + "</div>";
       
 
       // infowindowを作成

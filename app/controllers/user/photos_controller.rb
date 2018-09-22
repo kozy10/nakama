@@ -34,6 +34,8 @@ class User::PhotosController < User::UserBase
       render json: { images: photos }
   end
 
+
+
   private
   def photo_params
       params.require(:photo).permit(:image,:team_id)

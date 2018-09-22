@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 		resources :photos 
 
 		resources :participants, only: [:index]
-		resources :manages
+		resources :manages do
+			get '/participants' => 'manages#participants'
+		end
 		resources :conversations do
 			resources :messages
 		end

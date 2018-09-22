@@ -1,6 +1,11 @@
 class User::PracticesController < User::UserBase
 
 	def index
+		@team = Team.find(params[:team_id])
+		@practices = Practice.where(team_id: params[:team_id]).order("start_time DESC")
+		@practices.each do |practice|
+			@participants_number = Participant.where(practice_id: practice.id).count
+		end
 	end
 
 	def new
@@ -15,6 +20,16 @@ class User::PracticesController < User::UserBase
 	end
 
 	def show
+	end
+
+	def edit
+		@practice = Practice.find(params[:id])
+	end
+
+	def update
+		@practice = Practice.find(params[:id])
+		@practice.update(practice_params)
+		redirect_to edit_user_team_practice_path(@practice)
 	end
 
 	def join

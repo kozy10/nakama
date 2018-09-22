@@ -1,1 +1,32 @@
-index.html.erb
+<div class="container"> 
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:18px;"><%= @team.name%>の練習一覧</span>
+        </div>
+      </div>
+      <ul class="ul-unstyled">
+        <% @practices.each do |practice| %>
+          <li class="panel-body">
+            <div class="row">
+              <div class="col-xs-6">
+                <%= practice.start_time.to_s(:default_datetime)%>から
+                <br>
+                <span class="team-title"><%= practice.title %></span>
+              </div>
+              <div class="col-xs-4">
+                場所: <%= practice.location %>
+                <br>
+                参加予定: <%= @participants_number %> / <%= practice.limited_participants %>
+              </div>
+              <div class="col-xs-2">
+                <%= link_to "編集", edit_user_team_practice_path(id: practice.id), class: "btn btn-success col-xs-12" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

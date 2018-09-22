@@ -8,6 +8,9 @@ class User::ManagesController < User::UserBase
 		@team = Team.find(params[:id])
 		@practice = Practice.next(@team)
 		@conversations = Conversation.involving(current_user)
+		@total_views = @team.impressionist_count
+		@one_week_views = @team.impressionist_count(:start_date => 1.week.ago )
+		@participants_number = Participant.where(practice_id: @practice.id).count
 	end
 
 	def update
@@ -21,6 +24,12 @@ class User::ManagesController < User::UserBase
 
 	def photo
 		@photo = TeamPhoto.new
+	end
+
+	def participants
+		@team = Team.find(params[:manage_id])
+		@practice = Practice.next(@team)
+		@participants = Participant.where(practice_id: @practice.id)
 	end
 
 	private

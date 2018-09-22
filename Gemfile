@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.7'
+
 
 gem 'rails', '~> 5.2.1'
 gem 'sqlite3'
@@ -28,6 +28,8 @@ gem 'refile-s3'
 gem "paperclip", "~> 5.0.0.beta1"
 gem 'aws-sdk', '~> 2.3'
 gem 'figaro'
+gem 'json_pure'
+gem 'impressionist'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,92 +1,126 @@
+
 <div class="container">
 	<div class="panel panel-default">
-		<div class="panel-heading d-inline-block clearfix">
-      <span style="font-size:23px;"><%= @team.name %></span>
-      <%= link_to "チーム情報を編集する", user_manage_team_basics_path(@team), class: "btn btn-primary pull-right" %>
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-xs-6">
+	      	<span style="font-size:23px;"><%= @team.name %></span>
+	      </div>
+	      <div class="col-xs-3 text-center">
+	      	<%= link_to "表示を確認", user_team_path(@team), :style => "color:teal;" %>
+	      </div>
+	      <div class="col-xs-3">
+	      	<%= link_to "チーム情報の編集", user_manage_team_basics_path(@team), class: "btn btn-primary pull-right" %>
+	      </div>
+	    </div>
     </div>
     <div class="panel-body">
-    	<div class="col-md-7">
-    		<div class="panel panel-default">
-    			<div class="panel-heading d-inline-block clearfix">
-				    <strong style="font-size:18px;">練習</strong>
-				    <span><%= link_to "練習を投稿する", new_user_team_practice_path(@team), class: "btn btn-primary pull-right" %></span>
-				    <%= link_to "練習一覧", user_team_practices_path(@team), class: "pull-right", :style => "color:teal;" %>
-			    </div>
-			    <div class="panel-body practice">
-			    	<% if @practice %>
-			    		<div class="col-md-4">
-			    			<div class="practice-pic-box well"></div>
-			    		</div>
-			    		<div class="col-md-8">
-			    			<p>予定日: <%= @practice.start_time.to_s(:default_time) %></p>
-			    			<p>返答期限: <%= @practice.reply_deadline.to_s(:default_time)%></p>
-			    			<h3><%= @practice.title %></h3>
-			    			<p>場所：<%= @practice.location %></p>
-			    			<p>参加予定人数</p>
-			    			<%= link_to "編集する", edit_user_team_practice_path(@practice), class: "pull-right" %>
-			    		</div>
-			    	<% else %>
-			    		<p>練習の予定はありません</p>
-			    	<% end %>
-			    </div>
-			  </div>
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-    				<div class="text-left">
-				      <strong style="font-size:18px;">閲覧数</strong>
-				    </div>
-			    </div>
-			    <div class="panel-body">
-			    	<p>閲覧数</p>
-			    	<p>閲覧数　一週間</p>
-			    </div>
-			  </div>
-			</div>
-    	<div class="col-md-5">
-    		<div class="panel panel-default">
-    			<div class="panel-heading d-inline-block">
-				    <strong style="font-size:18px;">メッセージ</strong>
-			      <%= link_to "メッセージ一覧", user_conversations_path(@conversations), class: "pull-right", :style => "color:teal;" %>
-			    </div>
-			    <% if !@conversations.blank? %>
-				    <% @conversations.each do |conversation| %>
-			    		<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-			    			<div class="panel-body">
-			    				<div class="row">
-				    				<div class="col-md-2 text-left img-circle">
-				    					<p>写真</p>
-				    				</div>
-				    				<div class="col-md-8">
-				    					<h5><%= other.name %></h5>
-				    					<%= conversation.messages.last.message_time %>
-				    					<%= link_to user_conversation_messages_path(conversation) do %>
-	                      <%= conversation.messages.last.body %>
-	                  	<% end %>
-				    				</div>
-				    			</div>
-				    		</div>
-				    <% end %>
-			    <% else %>
-		    		<div class="panel-body">
+    	<div class="row">
+    		<div class="col-xs-12">
+	    		<div class="panel panel-default">
+	    			<div class="panel-heading">
 	    				<div class="row">
-		    				<p>メッセージはありません</p>
-		    			</div>
-		    		</div>
-			    <% end %>
-				</div> 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-    				<div class="text-left">
-				      <strong style="font-size:18px;">募集</strong>
+	    					<div class="col-xs-7">
+						    	<span class="text-center" style="font-size:18px;">次回の練習</span>
+						    </div>
+						    <div class="col-xs-2 text-center">
+						    	<%= link_to "練習一覧", user_team_practices_path(@team),  :style => "color:teal;" %>
+						    </div>
+						    <div class="col-xs-3">
+						    	<span><%= link_to "練習の投稿", new_user_team_practice_path(@team), class: "btn btn-primary pull-right" %></span>
+						    </div>
+						  </div>
 				    </div>
-			    </div>
-			    <div class="panel-body">
-			    	<p>募集の状態</p>
-			    	<p>募集を停止する</p>
-			    	<p>チームを削除する</p>
-			    </div>
-			  </div>
+				    <div class="panel-body">
+				    	<% if @practice %>
+		            <div class="row">
+		              <div class="col-xs-6">
+		                <%= @practice.start_time.to_s(:default_datetime)%>から
+		                <br>
+		                <span class="team-title"><%= @practice.title %></span>
+		              </div>
+		              <div class="col-xs-4">
+		                場所: <%= @practice.location %>
+		                <br>
+		                <%= link_to "参加者", user_manage_participants_path(params[:id]), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人
+		              </div>
+		              <div class="col-xs-2">
+		                <%= link_to "編集", edit_user_team_practice_path(@practice.id), class: "btn btn-success col-xs-12" %>
+		              </div>
+		            </div>
+				    	<% else %>
+				    		<p>今後の練習の予定はありません</p>
+				    	<% end %>
+				    </div>
+				  </div>
+				</div>
+			</div>
+
+    	<div class="row">
+    		<div class="col-xs-12">
+	    		<div class="panel panel-default">
+	    			<div class="panel-heading">
+					    <span class="text-center" style="font-size:18px;">メッセージ</span>
+				      <%= link_to "メッセージ一覧", user_conversations_path(@conversations), class: "text-center pull-right", :style => "color:teal;" %>
+				    </div>
+				    <% if !@conversations.blank? %>
+					    <% @conversations.each do |conversation| %>
+				    		<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+				    			<div class="panel-body">
+				    				<div class="row">
+					    				<div class="col-md-2 text-left img-circle">
+					    					<p>写真</p>
+					    				</div>
+					    				<div class="col-md-8">
+					    					<h5><%= other.name %></h5>
+					    					<%= conversation.messages.last.message_time %>
+					    					<%= link_to user_conversation_messages_path(conversation) do %>
+		                      <%= conversation.messages.last.body %>
+		                  	<% end %>
+					    				</div>
+					    			</div>
+					    		</div>
+					    <% end %>
+				    <% else %>
+			    		<div class="panel-body">
+		    				<div class="row">
+		    					<div class="col-xs-12">
+			    					<p>メッセージはありません</p>
+			    				</div>
+			    			</div>
+			    		</div>
+				    <% end %>
+					</div> 
+				</div>
+    	</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="panel panel-default">
+				    <div class="panel-heading">
+	    				<div class="text-left">
+					      <span class="text-center" style="font-size:18px;">閲覧数</span>
+					    </div>
+				    </div>
+				    <div class="panel-body">
+				    	<p>閲覧された回数(合計): <%= number_with_delimiter(@total_views) %> 回　</p>
+				    	<p>閲覧された回数(一週間): <%= number_with_delimiter(@one_week_views) %> 回</p>
+				    </div>
+				  </div>
+				</div>
+
+				<div class="col-xs-6">
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+	    				<div class="text-left">
+					      <span class="text-center" style="font-size:18px;">削除</span>
+					    </div>
+				    </div>
+				    <div class="panel-body">
+				    	<p><%= link_to "このチームを削除する", user_team_path(@team), method: :delete, class: "btn btn-danger" %></p>
+				    </div>
+				  </div>
+				</div>
     	</div>
     </div>
   </div>

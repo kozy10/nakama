@@ -1,5 +1,5 @@
 <div class="sidebar-nav">
-  <div class="navbar navbar-default" role="navigation">
+  <div class="navbar navbar-default navbar-transparent" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
         <label style="color: #fff;">他の項目を編集する</label>
@@ -16,10 +16,9 @@
         </li>
         
         <li class="<%= 'active' if controller?("teams") && action?("photos") %>" id = "nav-photos">
-          <%= link_to "写真", user_manage_team_photo_path(@team) %>
+          <%= link_to "アルバム", user_manage_team_photo_path(@team) %>
         </li>
-        
-       
+
       </ul>
     </div><!--/.nav-collapse -->
   </div>

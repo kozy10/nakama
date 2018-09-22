@@ -10,139 +10,6 @@
 
 
 
-.practice h3 {
-  margin-top: 0px;
-}
-
-.practice-pic-box {
-  height: 100px;
-}
-
-textarea {
-  resize: none;
-}
-
-td .number-field {
-  width: 70px;
-}
-
-
-.teams{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.teams .practice-box {
-  flex: 0 0 100%;
-  position: relative;
-  
-}
-.teams .practice-box::before {
-  content: '';
-  display: block;
-  padding-top: 100%;
-}
-.teams .practice-box div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.teams .practice:nth-child(even) div {
-  background: #eee;
-}
-
-
-.teams .team-box {
-  flex: 0 0 28%;
-  position: relative;
-  margin: 20px 20px 50px 20px ;
-}
-.teams .team-box::before {
-  content: '';
-  display: block;
-  padding-top: 100%;
-}
-.teams .team-box div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.teams .team-box:nth-child(even) div {
-  background: #eee;
-}
-.bg-white {
-  background-color: white;
-}
-
-.bottom {
-  position: absolute;
-  bottom: 0;
-}
-
-.pic-box {
-  height: 400px;
-}
-
-.practice-box {
-  height: 200px;
-}
-
-.navbar-header {
-  float:none;
-  line-height: 70px;
-}
-
-.navbar-header form {
-  margin: 20px 0px;
-
-}
-
-.btn-block {
-  width :60%;
-  margin: 20px auto 0px auto;
-}
-
-#slideshow {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  background-color: black;
-}
-
-#slideshow p {
-  float: left;
-  position: absolute;
-  color: white;
-  font-size: 3em;
-  z-index: 10;
-  font-weight: bold;
-  font-family: sans-serif;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-}
-
-#slideshow img {
-   position: absolute;
-   top: 0;
-   left:0;
-   z-index: 7;
-   opacity: 0.0;
-}
-#slideshow img.active {
-   z-index: 9;
-   opacity: 0.5;
-}
-#slideshow img.last-active {
-   z-index: 8;
-}
-
 .jumbotron {
   padding-top: 0px;
   // 背景画像を暗くする
@@ -163,7 +30,6 @@ td .number-field {
     background: white;
     border-color: white;
     z-index: 10;
-    margin-bottom: 0px ;
     min-height: 70px;
 }
 
@@ -346,14 +212,24 @@ td .number-field {
 // dropzone.jsのcss
 @media (max-width: 768px){
   .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete {
-      margin: 10px 0!important;
-      width: 100%;
+      margin-right: 0!important;
+      margin-left: 0!important;
+      margin-bottom: 40px;
+      width: 50%;
+      height: 200px;
   }
   .dropzone .dz-preview .dz-image {
     width: 100%;   
+    height: 100%;
   }
   .dropzone .dz-preview .dz-image img {
-    height: 120px;    
+    height: 100%;    
+
+  }
+
+  .dropzone .dz-preview .dz-remove {
+    line-height: 30px;
+    font-size: 20px;
   }
 }
 
@@ -671,3 +547,184 @@ body {
     color: #222;
     background-color: #F8F8F8;
 }
+
+.navbar-transparent{
+  background: transparent;
+  border-color: transparent;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+.container {
+  margin-top: 30px;
+}
+
+.navbar-toggle {
+  margin-top: 20px;
+}
+
+.navbar-header .address {
+  padding: 0px;
+}
+
+.navbar-header .form {
+  margin: 20px 0px;
+}
+
+.practice h3 {
+  margin-top: 0px;
+}
+
+.practice-pic-box {
+  height: 100px;
+}
+
+textarea {
+  resize: none;
+}
+
+td .number-field {
+  width: 70px;
+}
+
+
+.teams{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teams .practice-box {
+  flex: 0 0 100%;
+  position: relative;
+  
+}
+.teams .practice-box::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.teams .practice-box div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.teams .practice:nth-child(even) div {
+  background: #eee;
+}
+
+
+.teams .team-box {
+  flex: 0 0 28%;
+  position: relative;
+  margin: 20px 20px 50px 20px ;
+}
+.teams .team-box::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.teams .team-box div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.teams .team-box:nth-child(even) div {
+  background: #eee;
+}
+.bg-white {
+  background-color: white;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.pic-box {
+  height: 400px;
+}
+
+.practice-box {
+  height: 200px;
+}
+
+.navbar-header {
+  float:none;
+  
+}
+
+.navbar-header form {
+  margin: 20px 0px;
+
+}
+
+.btn-block {
+  width :60%;
+  margin: 20px auto 0px auto;
+}
+
+#slideshow {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: black;
+}
+
+#slideshow p {
+  float: left;
+  position: absolute;
+  color: white;
+  font-size: 2.5em;
+  z-index: 10;
+  font-weight: bold;
+  font-family: sans-serif;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+#slideshow img {
+   position: absolute;
+   top: 0;
+   left:0;
+   z-index: 7;
+   opacity: 0.0;
+}
+#slideshow img.active {
+   z-index: 9;
+   opacity: 0.5;
+}
+#slideshow img.last-active {
+   z-index: 8;
+}
+
+ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active {
+    background-color: #d9534f;
+}
+
+@media (max-width: 768px){
+  .team-title{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .child-center {
+    line-height: 100px;
+  }
+
+  .text-center {
+    line-height: 34px;
+  }
+}
+
+
+
+
+

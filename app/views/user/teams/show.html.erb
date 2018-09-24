@@ -1,92 +1,126 @@
-<div class="container">
+
 	<div class="row">
-		<div class="col-md-7">
-			<h1 class="pic-box well">写真</h1>
-		</div>
-		<div class="col-md-5">
-			<div class="row">
-				<h2><%= @team.name%></h2>
-			</div>
-			<div class="row">
-				<h4>スポーツ: <%= @team.sport.name %></h4>
-				<h4>活動場所: <%= @team.address %></h4>
-				<h4>管理者: <%= @organizer.name %>
-			</div>
-			<div class=" row d-flex align-items-end">
+			<%= attachment_image_tag @team, :profile_image, :fill, 800, 400, format: 'jpeg', fallback: "no_image.jpg", class: "img-responsive" %>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2><%= @team.name%></h2>
+			<h4>スポーツ: <%= @team.sport.name %></h4>
+			<h4>活動場所: <%= @team.address %></h4>
+			<h4>管理者: <%= @organizer.name %></h4>
+			<div class=" row d-flex align-items-end col-xs-12">
 				<h3 class="pull-right">
 					<%= link_to "メッセージを送る", user_conversations_path(sender_id: current_user.id, recipient_id: @team.organizer_id), method: 'post', class: "btn btn-success btn-lg" %>
-					</h3>
+				</h3>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<h4 class="pull-left">次回の練習</h4>
-		<h4 class="pull-right">すべて見る</h4>
-	</div>
-	<div class="row">
-		<% if @practice %>
-			<h1 class="practice-box well"><%= link_to "練習に参加する", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post' %></h1>
-		<% else %>
-			<h1 class="practice-box well">練習の予定はありません</h1>
-		<% end %>
-	</div>
-	<div class="row">
-		<div class="col-md-8">
-			<h4>チームの概要</h4>
-			<table class="table bg-white">
-				<tbody>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-					<tr>
-						<th style="width: 35%">活動日</th>
-						<td><%= @team.practice_day %></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-md-4">
-			<h4>今後の練習</h4>
-			<div class="teams">
-				<p class="practice-box well"></p>
-			</div>
-			<h4>過去の練習</h4>
-			<div class="teams">
-				<p class="practice-box well"></p>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<h4>近くのチーム</h4>
-	</div>
-	<div class="teams">
-		<p class="team-box well">チーム</p>
-		<p class="team-box well">チーム</p>
-		<p class="team-box well">チーム</p>
-	</div>
+	<div class="container">
+		<span style="font-size: 18px">次回の練習</span>
+		<span style="font-size: 15px"><%= link_to "すべての練習", user_team_practices_path(@team), :style => "color:teal;", class: "pull-right" %></span>
+		<div class="well">
+			<% if @practice %>
+        <div class="row">
+          <div class="col-xs-5">
+            <%= @practice.start_time.to_s(:default_datetime)%>から
+            <br>
+            <span class="team-title"><%= @practice.title %></span>
+          </div>
+          <div class="col-xs-4">
+            場所: <%= @practice.location %>
+            <br>
+            <%= link_to "参加者", user_manage_participants_path(params[:id]), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人
+          </div>
+          <div class="col-xs-3">
+          	<% if @participant %>
+          		<%= link_to "参加をキャンセル", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
+          	<% else %>
+            <%= link_to "参加する", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
+            <% end %>
+          </div>
+        </div>
+    	<% else %>
+    		<h4>今後の練習の予定はありません</h4>
+    	<% end %>
+    </div>
 
+		<div class="row">
+			<div class="col-xs-12">
+				<h4>チームの概要</h4>
+				<table class="table bg-white">
+					<tbody>
+						<tr>
+							<th style="width: 35%">活動日</th>
+							<td><%= @team.practice_day %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">練習時間</th>
+							<td><%= @team.practice_time %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">メンバー数</th>
+							<td><%= @team.number_of_members %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">メンバーの年齢層</th>
+							<td><%= @team.age_bracket %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">ホームページ</th>
+							<td><%= @team.homepage %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">説明</th>
+							<td><%= @team.description %></td>
+						</tr>
+						<tr>
+							<th style="width: 35%">最終更新日</th>
+							<td><%= @team.updated_at.to_s(:default_date) %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-		
-	
-</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<span style="font-size: 18px">アルバム （<%= @number_of_photos %>）枚</span>
+				<span style="font-size: 15px" class="pull-right">すべての写真を見る</span>
+			</div>
+		</div>
+
+		<div class="well col-xs-12">
+			<% if @photos %>
+				<% @photos.each do |photo| %>
+				  <div class="col-xs-4">
+						<%= image_tag photo.image.url(), style: "width:100%;", class: "img-rounded teamphotos" %>
+					</div>
+		    <% end %>
+			<% else %>
+				<div class="well">
+					<h4>写真はありません</h4>
+				</div>
+			<% end %>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h4 style="font-size: 18px">近くのチーム（<%= @team.sport.name %>）</h4>
+			</div>
+		</div>
+
+		<div class="row">
+			<% @teams.each do |team| %>
+	      <div class="col-xs-4">
+	        <div class="panel panel-default center-block">
+	          <%= link_to user_team_path(team) do %>
+	            <%= attachment_image_tag team, :profile_image, :fill, 300, 210, format: 'jpeg', fallback: "no_image_100x70.jpg", style: "width:100%; height:70%;", class: "img-responsive" %>
+	            <div class="panel-body">
+	              <p><%= team.address %></p>
+	              <h4><%= team.name %></h4>
+	            </div>
+	          <% end %>
+	        </div>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>

@@ -1,6 +1,4 @@
 /*
- *= require_tree .
- *= require_self
  *= require jquery-ui
  */
 
@@ -554,7 +552,7 @@ body {
 }
 
 .navbar {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .container {
   margin-top: 30px;
@@ -645,9 +643,6 @@ td .number-field {
   bottom: 0;
 }
 
-.pic-box {
-  height: 400px;
-}
 
 .practice-box {
   height: 200px;
@@ -715,13 +710,28 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
     font-weight: bold;
   }
 
-  .child-center {
+   .child-center {
     line-height: 100px;
   }
 
   .text-center {
     line-height: 34px;
   }
+ 
+  .team-panel {
+    width: 280px;
+
+  }
+
+  .well {
+    background-color: white;
+    margin-top: 10px;
+  }
+
+  .teamphotos {
+    margin-bottom: 20px;
+  }
+
 }
 
 

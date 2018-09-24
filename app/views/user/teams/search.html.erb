@@ -1,13 +1,23 @@
 
 <div class="container">
-  <div class="col-md-6">
     <% @arrteams.each do |team| %>
-      <%= link_to team.name, user_team_path(team) %>
+      <div class="col-xs-6">
+        <div class="panel panel-default team-panel center-block">
+          <%= link_to user_team_path(team) do %>
+            <%= attachment_image_tag team, :profile_image, :fill, 280, 180, format: 'jpeg', fallback: "no_image.jpg", size:"280x180" %>
+            <div class="panel-body">
+              <p><%= team.address %></p>
+              <h4><%= team.name %></h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </div>
 
-  <div class="col-md-6">
-    <div id="map" style="height: 500px;"></div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div id="map" style="height: 500px;"></div>
+    </div>
   </div>
 </div>
 

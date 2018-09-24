@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_090457) do
+ActiveRecord::Schema.define(version: 2018_09_24_065315) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -119,8 +119,6 @@ ActiveRecord::Schema.define(version: 2018_09_21_090457) do
     t.integer "establishment_year"
     t.string "address"
     t.string "practice_day"
-    t.time "practice_start_time"
-    t.time "practice_end_time"
     t.string "number_of_members"
     t.string "age_bracket"
     t.string "homepage"
@@ -132,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_090457) do
     t.datetime "updated_at", null: false
     t.integer "sport_id"
     t.text "profile_image_id"
+    t.string "practice_time"
   end
 
   create_table "users", force: :cascade do |t|

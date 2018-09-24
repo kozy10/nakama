@@ -26,6 +26,7 @@ config/master.key
 ## Environment normalization:
 /.bundle
 /vendor/bundle
+vender/bundle/ruby/2.5.0/bundler/gems/refile-46b4178654e6
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset

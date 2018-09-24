@@ -40,7 +40,13 @@ class User::TeamsController < User::UserBase
 		@team = Team.find(params[:id])
 		@organizer = User.find(@team.organizer_id)
 		@practice = Practice.next(@team)
-		impressionist(@team, nil, :unique => [:session_hash])
+		@participants_number = Participant.where(practice_id: @practice.id).count if @practice.present?
+		@participant = current_user.participants.where(practice_id: @practice.id).first if @practice.present?
+		@photos = Photo.where(team_id: @team.id) 
+		@number_of_photos = Photo.where(team_id: @team.id).count
+
+		geolocation = [@team.latitude,@team.longitude]
+		@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(3)
 	end
 
 	def update
@@ -64,7 +70,7 @@ class User::TeamsController < User::UserBase
 	
 
   def team_params
-    params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_start_time, :practice_end_time,
+    params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_time,
     	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image)
   end
 

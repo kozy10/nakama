@@ -10,7 +10,7 @@ class User::ManagesController < User::UserBase
 		@conversations = Conversation.involving(current_user)
 		@total_views = @team.impressionist_count
 		@one_week_views = @team.impressionist_count(:start_date => 1.week.ago )
-		@participants_number = Participant.where(practice_id: @practice.id).count
+		@participants_number = Participant.where(practice_id: @practice.id).count if @practice.present?
 	end
 
 	def update
@@ -34,7 +34,7 @@ class User::ManagesController < User::UserBase
 
 	private
   def team_params
-    params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_start_time, :practice_end_time,
+    params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_time,
     	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sports_name)
   end
 

@@ -1,39 +1,58 @@
 
 <!-- this page has instance @other, @messages from message contr ,@conversation from convesation contrl-->
 <div class="container">
-    <div class="row">
-        <div class="col-md-3 text-center">
-            <p class="img-circle profile-1"></p>
-            <br>
-            <strong><%= @other.name %></strong>
-            <br>
-            <p>show profile</p>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @other.name %>さんへのメッセージ
         </div>
-
-        <div class="col-md-9">
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                     Conversation with <%= @other.name %>
-                </div>
-                <div class="panel-body">
-                    <%= form_for [@conversation, @conversation.messages.new], url: user_conversation_messages_path, remote: true do |f| %>
-                        <div class="form-group">
-                            <%= f.text_area :body, placeholder: "Write your messages here", class: "form-control" %>
-                        </div>
-
-                        <%= f.hidden_field :user_id, value: current_user.id %>
-
-                        <div class="actions">
-                            <%= f.submit "Send", class: "btn btn-danger pull-right" %>
-                        </div>
-                    <% end %>
-                </div>
+        <div class="panel-body">
+          <%= form_for [@conversation, @conversation.messages.new], url: user_conversation_messages_path, remote: true do |f| %>
+            <div class="form-group">
+              <%= f.text_area :body, class: "form-control" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
             </div>
-            
-            <div id="chat">
-                <%= render @messages %>
+            <div class="actions">
+              <%= f.submit "メッセージを送信", class: "btn btn-danger pull-right" %>
             </div>
+          <% end %>
         </div>
+      </div>
+      <div id="chat">
+        <% @messages.each do |message| %>
+          <% if message.user == current_user %>
+            <div class="col-xs-9">
+              <div class="popover left show" style="position:relative; max-width:100%;">
+                <div class="arrow"></div>
+                <div class="popover-content">
+                  <p><%= message.body %></p>
+                  <p class="text-right"><%= message.message_time %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-3">
+                <%= image_tag("no_image.jpg", :width => "82px", :height => "82px", :class => "center-block") %>
+                <div class="text-center"><%= message.user.name %></div>
+            </div>
+          </div>
+          <% else%>
+            <div class="col-xs-3">
+              <%= message.user.name %>
+            </div>
+            <div class="col-xs-9">
+              <div class="popover left show" style="position:relative; max-width:100%;">
+                <div class="arrow"></div>
+                <div class="popover-content">
+                  <p><%= message.body %></p>
+                  <p class="text-right"><%= message.message_time %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
+              

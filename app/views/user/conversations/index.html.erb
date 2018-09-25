@@ -10,18 +10,26 @@
             <% @conversations.each do |conversation| %>
               <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
               <div class="row">
-                <div class="col-md-2 text-center row-space-1">
-                  <p>写真</p>
-                   <strong><%= other.name %></strong> 
-                </div>
-                <%= link_to user_conversation_messages_path(conversation) do %>
-                  <div class="col-md-8">
-                    <%= conversation.messages.last.body %>
+                <% if !conversation.messages.last.blank? %>
+                  <%= link_to user_conversation_messages_path(conversation) do %>
+                    <div class="col-xs-2">
+                      <strong><%= other.name %></strong> 
+                    </div>
+                    <div class="col-xs-7">
+                      <%= conversation.messages.last.body %>
+                    </div>
+                    <div class="col-xs-3">
+                      <span style="font-size: 12px;", class="pull-right"><%= conversation.messages.last.message_time %></span>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="col-xs-2">
+                    <strong><%= other.name %></strong> 
+                  </div>
+                  <div class="col-xs-7">
+                    <h4>メッセージはありません</h4>
                   </div>
                 <% end %>
-                <div class="col-md-2">
-                  <%= conversation.messages.last.message_time %>
-                </div>    
               </div>
             <% end %>
           <% else %>

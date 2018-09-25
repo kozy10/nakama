@@ -1,5 +1,42 @@
-<div class="container">
-	<% @practices.each do |practice| %>
-		<%= practice.title %>
-	<% end %>	
+<div class="container"> 
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:18px;">練習予定</span>
+        </div>
+      </div>
+      <ul class="ul-unstyled">
+      	<% if !@practices.blank? %>
+	        <% @practices.each do |practice| %>
+	          <li class="panel-body">
+	            <div class="row">
+	              <div class="col-xs-6">
+	                <%= practice.start_time.to_s(:default_datetime)%> 〜 <%= practice.end_time.to_s(:default_time)%>
+	                <br>
+	                <span class="team-title"><%= practice.title %></span>
+	                <br>
+	                <span><%= practice.team.name %></span>
+	              </div>
+	              <div class="col-xs-3">
+	              	<br>
+	                場所: <%= practice.location %>
+	                <br>
+	                <%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
+	              </div>
+	              <div class="col-xs-3">
+	              	<br>
+	                <%= link_to "キャンセル", user_team_practice_participants_path(team_id: practice.team.id, practice_id: practice.id), method: 'post', class: "btn btn-success" %>
+	              </div>
+	            </div>
+	          </li>
+	        <% end %>
+	      <% else %>
+	       	<div class="panel-body">
+	       		<h4>参加予定の練習はありません</h4>
+	       	</div>
+	      <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

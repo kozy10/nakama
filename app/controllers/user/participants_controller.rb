@@ -1,7 +1,10 @@
 class User::ParticipantsController < User::UserBase
 
 	def index
-		@practices = Practice.joins(:participants).where(participants: {user_id: current_user.id})
+		@practices = Practice.joins(:participants).where(participants: {user_id: current_user.id}).order("start_time ASC")
+		@practices.each do |practice|
+			@participants_number = Participant.where(practice_id: practice.id).count
+		end
 	end
 
 	def create

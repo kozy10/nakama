@@ -38,6 +38,10 @@ class User::PracticesController < User::UserBase
 		redirect_to user_team_path(params[:team_id])
 	end
 
+	def participants
+		@participants = Participant.where(practice_id: params[:practice_id])
+	end
+
 	private
   def practice_params
     params.require(:practice).permit(:team, :title, :date, :start_time, :end_time, 

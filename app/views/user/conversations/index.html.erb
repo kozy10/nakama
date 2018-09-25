@@ -1,33 +1,34 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center">
-                    メッセージ一覧
-                </div>            
-                <% @conversations.each do |conversation| %>
-                    <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-                    <% if !conversation.messages.blank? %>
-                        <div class="panel-body panel-conversation">
-                            <div class="row">
-                                <div class="col-md-2 text-center row-space-1">
-                                    <p>写真</p>s
-                                    <strong><%= other.name %></strong> 
-                                </div>
-                                <%= link_to user_conversation_messages_path(conversation) do %>
-                                    <div class="col-md-8">
-                                        <%= conversation.messages.last.body %>
-                                    </div>
-                                <% end %>
-                                <div class="col-md-2">
-                                    <%= conversation.messages.last.message_time %>
-                                </div>    
-                            </div>
-                        </div>
-                        <hr>
-                    <% end %>
-                <% end %>   
-            </div>    
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          メッセージ一覧
         </div>
-    </div>    
+        <div class="panel-body panel-conversation">
+          <% if !@conversations.blank? %>
+            <% @conversations.each do |conversation| %>
+              <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+              <div class="row">
+                <div class="col-md-2 text-center row-space-1">
+                  <p>写真</p>
+                   <strong><%= other.name %></strong> 
+                </div>
+                <%= link_to user_conversation_messages_path(conversation) do %>
+                  <div class="col-md-8">
+                    <%= conversation.messages.last.body %>
+                  </div>
+                <% end %>
+                <div class="col-md-2">
+                  <%= conversation.messages.last.message_time %>
+                </div>    
+              </div>
+            <% end %>
+          <% else %>
+            <h4>メッセージはありません</h4>
+          <% end %>
+        </div>
+      </div>    
+    </div>
+  </div>    
 </div>

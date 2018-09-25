@@ -17,15 +17,14 @@ Rails.application.routes.draw do
 		resources :teams do 
 			resources :practices do
 				resources :participants, only: [:create]
+				get '/participants' => 'practices#participants'
 			end
 		end
 		
 		resources :photos 
 
 		resources :participants, only: [:index]
-		resources :manages do
-			get '/participants' => 'manages#participants'
-		end
+		resources :manages 
 		resources :conversations do
 			resources :messages
 		end

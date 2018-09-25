@@ -26,11 +26,11 @@ class User::ManagesController < User::UserBase
 		@photo = TeamPhoto.new
 	end
 
-	def participants
-		@team = Team.find(params[:manage_id])
-		@practice = Practice.next(@team)
-		@participants = Participant.where(practice_id: @practice.id)
-	end
+	# def participants
+	# 	@team = Team.find(params[:manage_id])
+	# 	@practice = Practice.next(@team)
+	# 	@participants = Participant.where(practice_id: @practice.id)
+	# end
 
 	private
   def team_params

@@ -18,7 +18,7 @@
               <div class="col-xs-4">
                 場所: <%= practice.location %>
                 <br>
-                参加予定: <%= @participants_number %> / <%= practice.limited_participants %>
+                <%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
               </div>
               <div class="col-xs-2">
                 <%= link_to "編集", edit_user_team_practice_path(id: practice.id), class: "btn btn-success col-xs-12" %>

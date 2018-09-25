@@ -706,7 +706,7 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 
 @media (max-width: 768px){
   .team-title{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
   }
 
@@ -730,6 +730,20 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 
   .teamphotos {
     margin-bottom: 20px;
+  }
+
+  .nav-btn {
+    float: none;
+  }
+
+  .navbar-header .col-xs-2 {
+    padding: 0;
+    width: 20%;
+  }
+
+  .navbar-toggle {
+    margin-top: 0;
+    margin-bottom: 15px;
   }
 
 }

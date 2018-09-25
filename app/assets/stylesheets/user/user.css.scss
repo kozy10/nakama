@@ -4,6 +4,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "toastr";
 @import "dropzone/dropzone";
 
 
@@ -748,6 +749,10 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 
   .container {
     margin-bottom: 30px;
+  }
+
+  #toast-container {
+    margin-top: 70px;
   }
 
 }

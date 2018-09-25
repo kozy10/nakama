@@ -33,7 +33,7 @@ class User::TeamsController < User::UserBase
 		@team = Team.new(team_params)
 		@team.organizer_id = current_user.id
 		@team.save
-		redirect_to user_manage_team_basics_path(@team)
+		redirect_to user_manage_team_basics_path(@team), notice: "チームを作成しました"
 	end
 
 	def show

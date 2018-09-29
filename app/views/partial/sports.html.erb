@@ -1,0 +1,25 @@
+<div class="modal fade" id="image_select_dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          スポーツを選択
+        </h5>
+        <button class="close" aria-label = 'Close' data-dismiss = 'modal' type = 'button' >
+          <span aria-hidden = 'true'>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% @sports.each do |sport| %>
+          <% sport.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+      
+<script>
+  var image_select
+
+
+

@@ -65,6 +65,13 @@ class User::TeamsController < User::UserBase
 		@photo = Photo.new
 	end
 
+	def sports
+		@sport = Sport.new
+		respond_to do |format|
+			format.js { render 'partial/sports'}
+		end
+	end
+
 	private
 
 	

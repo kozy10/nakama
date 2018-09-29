@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 		get 'manage-team/:id/photos/list' => 'photos#list'
 		delete 'manage-team/:id/photos/:id' => 'photos#destroy'
 		get 'manage-team/:id/photos/create' => 'photos#create'
+		get 'search/sports' => 'teams#sports', as: 'search_sports'
 
 		get '/search' => 'teams#search'
 	end

@@ -4,7 +4,7 @@
       <div class="col-xs-6">
         <div class="panel panel-default team-panel center-block">
           <%= link_to user_team_path(team) do %>
-            <%= attachment_image_tag team, :profile_image, :fill, 280, 180, format: 'jpeg', fallback: "no_image.jpg", size:"280x180" %>
+            <%= attachment_image_tag team, :profile_image, :fill, 280, 180, format: 'jpeg', fallback: "/images/no_image.jpg", size:"280x180" %>
             <div class="panel-body">
               <p><%= team.address %></p>
               <h4><%= team.name %></h4>

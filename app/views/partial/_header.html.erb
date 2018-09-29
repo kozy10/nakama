@@ -10,13 +10,26 @@
               <%= hidden_field_tag :lng %>
             </div>
             <div class="col-xs-2 col-md-3">
+<%
+=begin
+%>
+              <%= link_to 'スポーツを選択', user_search_sports_path, remote: true, class: 'btn btn-info' %>
+              <div id="user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            </div>
+
+<%
+=end
+%>
+
               <%= select_tag :sport_id, options_from_collection_for_select(@sports, :id, :name), prompt: "スポーツを選ぶ", class: "form-control" %>
             </div>
             <div class="col-xs-1">
               <%= submit_tag "検索", class: "btn btn-danger nav-btn form-cotrol" %>
             </div>
+
+
           <% end %>
-          
+
 
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -69,6 +82,16 @@
 </header>
 
 <script>
+
+$(function() {
+  $('#sports').click(function() {
+
+    $('#result').load('sports.html.erb');
+  });
+
+});
+
+
 function init() {
 
   var input = /** @type {!HTMLInputElement} */(

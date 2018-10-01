@@ -1,6 +1,6 @@
 class CreatePractices < ActiveRecord::Migration[5.2]
   def change
-    create_table :practices do |t|
+    create_table :practices, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
     	t.integer :team_id
     	t.string :title
     	t.time :date

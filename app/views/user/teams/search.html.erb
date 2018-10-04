@@ -8,8 +8,9 @@
           <%= link_to user_team_path(team) do %>
             <%= attachment_image_tag team, :profile_image, :fill, 280, 180, format: 'jpeg', fallback: "/images/rio.jpg", class: "img-responsive" %>
             <div class="panel-body">
-              <h6><%= team.address %></h6>
+              <h6><%= team.sport.name %></h6>
               <h5><%= team.name %></h5>
+              <h6><span class="glyphicon glyphicon-map-marker"></span><%= team.address %></h6>
             </div>
           <% end %>
         </div>

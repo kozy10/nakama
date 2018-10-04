@@ -35,7 +35,7 @@
 				    	<% if @practice %>
 		            <div class="row">
 		              <div class="col-xs-6">
-		                <%= @practice.start_time.to_s(:default_datetime)%>から
+		                <%= @practice.start_time.to_s(:datetime_jp)%>〜
 		                <br>
 		                <span class="team-title"><%= @practice.title %></span>
 		              </div>
@@ -45,7 +45,7 @@
 		                <%= link_to "参加者", user_team_practice_participants_path(team_id: @team.id,practice_id: @practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人 
 		              </div>
 		              <div class="col-xs-2">
-		                <%= link_to "編集", edit_user_team_practice_path(@practice.id), class: "btn btn-success col-xs-12" %>
+		                <%= link_to "編集", edit_user_team_practice_path(team_id: @team.id, id: @practice.id), class: "btn btn-success col-xs-12" %>
 		              </div>
 		            </div>
 				    	<% else %>

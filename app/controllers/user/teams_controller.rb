@@ -49,7 +49,9 @@ class User::TeamsController < User::UserBase
 		geolocation = [@team.latitude,@team.longitude]
 
 		# if Team.where(sport_id: @team.sport_id).near(geolocation, 3) != 0
-			@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(3)
+		@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(4)
+		@arrteams = @teams.to_a
+		@nearteams = @arrteams.from(1)
 		
 	end
 

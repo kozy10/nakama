@@ -11,5 +11,5 @@
 
 /*global toastr*/
 toastr.options = {
-  "timeOut": "2000"
+  "timeOut": "10000"
 }

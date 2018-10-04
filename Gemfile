@@ -32,6 +32,7 @@ gem 'json_pure'
 gem 'impressionist'
 gem 'gretel'
 gem 'toastr-rails'
+gem 'rake'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

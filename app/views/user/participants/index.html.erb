@@ -1,5 +1,4 @@
-<div class="container"> 
-  <div class="col-md-10 col-md-offset-1">
+<div class="container-fluid"> 
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="text-center">
@@ -11,23 +10,53 @@
 	        <% @practices.each do |practice| %>
 	          <li class="panel-body">
 	            <div class="row">
+	            	<div class="col-xs-2">
+	            		<h6>
+	            			<%= practice.start_time.to_s(:default_year)%>
+	            		</h6>
+	            		<h4>
+	            			<%= practice.start_time.to_s(:default_date)%>
+	            		</h4>
+	            		<h6>
+	            			<%= practice.start_time.to_s(:default_time)%>~
+	            		</h6>
+	            	</div>
+
 	              <div class="col-xs-6">
-	                <%= practice.start_time.to_s(:default_datetime)%> 〜 <%= practice.end_time.to_s(:default_time)%>
-	                <br>
-	                <span class="team-title"><%= practice.title %></span>
-	                <br>
-	                <span><%= practice.team.name %></span>
+	              	<div class="row">
+		              	<div class="col-xs-4">
+		              	  <%= attachment_image_tag practice.team, :profile_image, :fill, 280, 280, format: 'jpeg', fallback: "/images/rio.jpg", class: "img-responsive" %>
+		              	</div>
+		              	<div class="col-xs-8">
+		              		<h6>
+		              			<%= link_to practice.team.name, user_team_path(practice.team), :style => "color:teal;" %>
+		              		</h6>
+		              	</div>
+		              </div>
+		              <div class="row">
+		              	<div class="col-xs-12">
+	                		<strong><%= practice.title %></strong>
+	                	</div>
+	              	</div>
+	              		
+		               <h6><span class="glyphicon glyphicon-map-marker"></span><%= practice.location %></h6>
+	                
 	              </div>
-	              <div class="col-xs-3">
-	              	<br>
-	                場所: <%= practice.location %>
-	                <br>
-	                <%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
-	              </div>
-	              <div class="col-xs-3">
-	              	<br>
-	                <%= link_to "キャンセル", user_team_practice_participants_path(team_id: practice.team.id, practice_id: practice.id), method: 'post', class: "btn btn-success" %>
-	              </div>
+	              <div class="col-xs-4">
+	              	<div class="row">
+	              		<div class="col-xs-12">
+			                <br>
+			                <h6>
+			                	<%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
+			                </h6>
+			              </div>
+		              </div>
+		              <div class="row">
+		              	<div class="col-xs-12">
+		                	<%= link_to "キャンセル", user_team_practice_participants_path(team_id: practice.team.id, practice_id: practice.id), method: 'post', class: "btn btn-success" %>
+		                </div>
+		              </div>
+	            	</div>
 	            </div>
 	          </li>
 	        <% end %>

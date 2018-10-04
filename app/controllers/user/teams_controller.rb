@@ -17,7 +17,8 @@ class User::TeamsController < User::UserBase
       @longitude = geolocation[1]
     end
     @teams = Team.near(geolocation, 3, order: 'distance')
-    @teams = Team.where(sport_id: params[:sport_id]) if params[:sport_id].present?
+    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
+    @teams = @teams.limit(6)
     @arrteams = @teams.to_a
   end
 
@@ -46,7 +47,10 @@ class User::TeamsController < User::UserBase
 		@number_of_photos = Photo.where(team_id: @team.id).count
 
 		geolocation = [@team.latitude,@team.longitude]
-		@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(3)
+
+		# if Team.where(sport_id: @team.sport_id).near(geolocation, 3) != 0
+			@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(3)
+		
 	end
 
 	def update

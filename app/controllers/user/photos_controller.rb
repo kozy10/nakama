@@ -23,13 +23,13 @@ class User::PhotosController < User::UserBase
 
       photos = []
       Photo.where(team_id: team.id).each do |photo|
-          new_photo = {
-              id: photo.id,
-              name: photo.image_file_name,
-              size: photo.image_file_size,
-              src: photo.image
-          }
-          photos.push(new_photo)
+        new_photo = {
+            id: photo.id,
+            name: photo.image_file_name,
+            size: photo.image_file_size,
+            src: photo.image
+        }
+        photos.push(new_photo)
       end
       render json: { images: photos }
   end

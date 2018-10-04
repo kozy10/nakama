@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -9,17 +9,19 @@
           <% if !@conversations.blank? %>
             <% @conversations.each do |conversation| %>
               <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-              <div class="row">
                 <% if !conversation.messages.last.blank? %>
                   <%= link_to user_conversation_messages_path(conversation) do %>
-                    <div class="col-xs-2">
-                      <strong><%= other.name %></strong> 
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <strong><%= other.name %>さん</strong> 
+                        <span style="font-size: 12px;" class="pull-right" ><%= conversation.messages.last.created_at.to_s(:default_yeardate) %>
+                        </span>
+                      </div>
                     </div>
-                    <div class="col-xs-7">
-                      <%= conversation.messages.last.body %>
-                    </div>
-                    <div class="col-xs-3">
-                      <span style="font-size: 12px;", class="pull-right"><%= conversation.messages.last.message_time %></span>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <span style="font-size: 12px;"><%= conversation.messages.last.body %></span>
+                      </div>
                     </div>
                   <% end %>
                 <% else %>
@@ -30,7 +32,6 @@
                     <h4>メッセージはありません</h4>
                   </div>
                 <% end %>
-              </div>
             <% end %>
           <% else %>
             <h4>メッセージはありません</h4>

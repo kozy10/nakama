@@ -1,28 +1,26 @@
-<div class="container"> 
-  <div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="text-center">
-          <span style="font-size:18px;">マイチーム一覧</span>
-        </div>
+<div class="container-fluid"> 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="text-center">
+        <span style="font-size:18px;">マイチーム一覧</span>
       </div>
-      <ul class="ul-unstyled">
-        <% @teams.each do |team| %>
-          <li class="panel-body">
-            <div class="row">
-              <div class="col-xs-3 ">
-                <%= attachment_image_tag team, :profile_image, :fill, 100, 100 %>
-              </div>
-              <div class="col-xs-6 child-center">
-                <span class="team-title"><%= team.name %></span>
-              </div>
-              <div class="col-xs-3 child-center">
-                <%= link_to "管理する", user_manage_path(team), class: "btn btn-success" %>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
     </div>
+    <ul class="ul-unstyled">
+      <% @teams.each do |team| %>
+        <li class="panel-body">
+          <div class="row">
+            <div class="col-xs-3 ">
+              <%= attachment_image_tag team, :profile_image, :fill, 80, 80 %>
+            </div>
+            <div class="col-xs-6 child-center">
+              <span><%= team.name %></span>
+            </div>
+            <div class="col-xs-3 child-center">
+              <%= link_to "管理", user_manage_path(team), class: "btn btn-success" %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

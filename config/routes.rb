@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 		end
 		
 		resources :photos 
+		resources :main_photos
 
 		resources :participants, only: [:index]
 		resources :manages 

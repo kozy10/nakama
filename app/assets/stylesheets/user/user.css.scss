@@ -7,23 +7,258 @@
 @import "toastr";
 @import "dropzone/dropzone";
 
-
-
-.jumbotron {
-  padding-top: 0px;
-  // 背景画像を暗くする
-  // background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(person-845325_1920.jpg);
-  size: cover;
-  // 背景画像の位置を決める
-  position: 50% 50%;
-  height: 420px;
-  position: relative;
+//margin
+.margin-right-10 {
+  margin-right: 10px;
 }
 
-.jumbotron .container .row{
+//header
+.image .caret {
+  margin-top: 20px;
+}
+
+.navbar .image {
+    width: 65px;
+  }
+
+.padding-right-0 {
+  padding-right: 0;
+}
+
+body {
+    background-color: white;
+}
+
+@media (max-width: 541px){
+  .margin-top-minus {
+    margin-top: -28px;
+  }
+}
+
+//タブレット以上
+@media (min-width: 769px){
+//header
+  .navbar .image {
+    width: 80px;
+  }
+
+  .navbar .search {
+    height: 34px;
+  }
+
+  .nav > li > a {
+    padding: 10px 30px;
+  }
+//slideshow
+  #slideshow {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: black;
+  }
+
+  #slideshow p {
+    float: left;
+    position: absolute;
+    color: white;
+    font-size: 3em;
+    z-index: 10;
+    font-weight: bold;
+    font-family: sans-serif;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  #slideshow img {
+     position: absolute;
+     top: 0;
+     left:0;
+     z-index: 7;
+     opacity: 0.0;
+  }
+  #slideshow img.active {
+     z-index: 9;
+     opacity: 0.5;
+  }
+  #slideshow img.last-active {
+     z-index: 8;
+  }
+}
+
+
+@media (max-width: 991px){
+  .margin-top-10 {
+    margin-top: 10px;
+  }
+}
+
+
+
+@media (max-width: 768px){
+  .team-title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+   .child-center {
+    line-height: 80px;
+  }
+
+  .text-center {
+    line-height: 34px;
+  }
+
+  .well {
+    background-color: white;
+    margin-top: 10px;
+  }
+
+  .teamphotos {
+    margin-bottom: 20px;
+  }
+
+  .container {
+    margin-bottom: 30px;
+  }
+
+  #toast-container {
     margin-top: 100px;
-    color: #fff;
+  }
+
+  .map {
+    margin-top: 20px;
+  }
+
+  .panel-body {
+    padding: 5px;
+  }
+
+  .ul-unstyled {
+    margin: 0;
+  }
+
+  .popover-content .text-right {
+    margin-bottom: 0;
+  }
+
+  .speaker {
+    padding: 0;
+  }
+
+  .messages {
+    margin-bottom: 20px;
+  }
+
+//header
+  .navbar .container-fluid {
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+
+  .navbar .img-responsive {
+    width: 78%;
+  }
+
+  .navbar .row {
+    margin-top: 10px;
+  }
+
+  .navbar .sport {
+    height: 34px;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .navbar .image {
+    padding-right: 0;
+    padding-top: 5px;
+  }
+
+  .navbar-toggle {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+
+//slideshow
+  #slideshow {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: black;
+  }
+
+  #slideshow p {
+    float: left;
+    position: absolute;
+    color: white;
+    font-size: 2.5em;
+    z-index: 10;
+    font-weight: bold;
+    font-family: sans-serif;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  #slideshow img {
+     position: absolute;
+     top: 0;
+     left:0;
+     z-index: 7;
+     opacity: 0.0;
+  }
+  #slideshow img.active {
+     z-index: 9;
+     opacity: 0.5;
+  }
+  #slideshow img.last-active {
+     z-index: 8;
+  }
+
+//topページ
+  .top-teams {
+    margin-top: 20px;
+  }
+
+//全体
+  .wrap {
+    overflow: hidden;
+    width: 100%;
+    margin-top: -30px;
+  }
+
+//teams/new
+  .panel .form-control {
+    margin-bottom: 20px;
+  }
+
+//image プレビュー
+  .imagePreview {
+    width: 50%;
+    height: 180px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
 
 .navbar-default {
     background: white;
@@ -210,20 +445,29 @@
 
 // dropzone.jsのcss
 @media (max-width: 768px){
+.dropzone{
+  padding: 0;
+}
   .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete {
-      margin-right: 0!important;
-      margin-left: 0!important;
-      margin-bottom: 40px;
-      width: 50%;
-      height: 200px;
+    margin-right: 0!important;
+    margin-left: 0!important;
+    margin-bottom: 40px;
+    width: 50%;
+    height: 100px;
+    padding: 0 2px;
   }
+
+  .dropzone .dz-preview {
+    margin:16px 0px 30px 0px;
+  }
+
   .dropzone .dz-preview .dz-image {
     width: 100%;   
     height: 100%;
   }
+
   .dropzone .dz-preview .dz-image img {
     height: 100%;    
-
   }
 
   .dropzone .dz-preview .dz-remove {
@@ -235,10 +479,20 @@
 .dropzone .dz-preview .dz-image img{
   width: 100%;
   height: 100%;
+  border-radius: 0;
+}
+
+.dropzone .dz-preview .dz-image {
+  border-radius: 0;
 }
 
 .dropzone.dz-started .dz-message {
   display: block;
+  margin: 20px 0 0 0;
+}
+
+.dropzone .dz-preview .dz-remove {
+    font-size: 18px;
 }
 
 
@@ -341,74 +595,12 @@ span.listing-title {
   height: 180px;
 }
 
-//showページのデスクトップcss
-@media (min-width: 992px){
-  .panel-listing img {
-  height: 160px;
-  }
-}
 
-.price-card {
-    background: rgba(60,63,64,0.9);
-    color: #fff;
-    position: absolute;
-    bottom: 125px;
-    padding: 7px 10px;
-}
 
-/*カレンダー用編集*/
-.class-holiday {
-    background: #337ab7 !important;
-    color: #fff !important;
-}
 
-.class-holiday > .ui-state-default {
-    background: #337ab7 !important;
-    color: #fff !important;
-}
 
-.calendar .ui-datepicker {
-    width: 100%;
-}
-.calendar .ui-datepicker .ui-datepicker-current-day {
-    background-color: #fff;
-}
-#datepicker .ui-datepicker .ui-datepicker-current-day a{
-    color: #222;
-}
 
-// listingチェックのcss
-li.listing-checked:before{
-  content: "\f00c";
-  font-family: FontAwesome;
-  position: absolute;
-  z-index: 100;
-  top:15%;
-  right: 5px;
-  font-size: 1.55em;
-  text-align: center;
-  width: 1.25em;
-  color: #00d1c1;
-}
 
-// vertical-navbar notcheckedmark
-li.listing-notchecked:before{
-  content: "\f067";
-  font-family: FontAwesome;
-  position: absolute;
-  z-index: 100;
-  top: 15%;
-  right: 5px;
-  font-size: 1.55em;
-  text-align: center;
-  width: 1.25em;
-  color: #555;
-}
-
-li#nav-publish a{
-  color: #d9534f;
-  font-weight: bold;
-}
 
 // Top-search-fieldのcss
 .top-search-field {
@@ -422,29 +614,8 @@ li#nav-publish a{
   background: rgba(0,0,0,0.6);
 }
 
-@media (min-width: 992px){
-  .top-search-field .col-md-7,.col-md-2,.col-md-1{
-    padding: 0;
-  }
-}
-
-.top-search-field input{
-  border-radius: 0;
-}
 
 
-// トップページのportfolioのcss
-.portfolio-item a img{
-  width: 100%;
-  height: 200px;
-}
-
-.portfolio-caption{
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 15px
-}
 
 // フッターのCSS
 footer {
@@ -512,18 +683,7 @@ footer ul.quicklinks {
     text-transform: none;
 }
 
-//topページコンテントのcss
-.portfolio-item a img{
-  width: 100%;
-  height: 200px;
-}
 
-.portfolio-caption{
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 15px
-}
 
 section h2.section-heading {
   font-size: 40px;
@@ -544,7 +704,6 @@ a {
 
 body {
     color: #222;
-    background-color: #F8F8F8;
 }
 
 .navbar-transparent{
@@ -667,158 +826,13 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
     background-color: #d9534f;
 }
 
-@media (max-width: 768px){
-  .team-title{
-    font-size: 20px;
-    font-weight: bold;
-  }
 
-   .child-center {
-    line-height: 80px;
-  }
 
-  .text-center {
-    line-height: 34px;
-  }
- 
-  
 
-  .well {
-    background-color: white;
-    margin-top: 10px;
-  }
 
-  .teamphotos {
-    margin-bottom: 20px;
-  }
 
-  .navbar-toggle {
-    margin-top: 0;
-    margin-bottom: 15px;
-  }
 
-  .container {
-    margin-bottom: 30px;
-  }
 
-  #toast-container {
-    margin-top: 100px;
-  }
-
-  
-
-  body {
-    background-color: white;
-  }
-
-  .map {
-    margin-top: 20px;
-  }
-
-  .panel-body {
-    padding: 5px;
-  }
-
-  .ul-unstyled {
-    margin: 0;
-  }
-
-  .popover-content .text-right {
-    margin-bottom: 0;
-  }
-
-  .speaker {
-    padding: 0;
-  }
-
-  .messages {
-    margin-bottom: 20px;
-  }
-
-//header
-
-  .navbar .img-responsive {
-    width: 78%;
-  }
-
-  .navbar .container-fluid {
-    padding-bottom: 0;
-  }
-
-  .image .caret {
-    margin-top: 18px;
-  }
-
-  .navbar .row {
-    margin-top: 10px;
-  }
-
-  .navbar .sport {
-    height: 30px;
-    font-size: 12px;
-    padding: 0;
-  }
-
-  .navbar .container-fluid {
-    padding-top: 10px;
-    padding-bottom: 0;
-  }
-
-  .navbar .image {
-    padding-right: 0;
-    padding-top: 20px;
-    padding-left: 10px;
-  }
-
-//slideshow
-  #slideshow {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background-color: black;
-  }
-
-  #slideshow p {
-    float: left;
-    position: absolute;
-    color: white;
-    font-size: 2.5em;
-    z-index: 10;
-    font-weight: bold;
-    font-family: sans-serif;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-  }
-
-  #slideshow img {
-     position: absolute;
-     top: 0;
-     left:0;
-     z-index: 7;
-     opacity: 0.0;
-  }
-  #slideshow img.active {
-     z-index: 9;
-     opacity: 0.5;
-  }
-  #slideshow img.last-active {
-     z-index: 8;
-  }
-
-//topページ
-  .top-teams {
-    margin-top: 20px;
-  }
-
-  
-  .wrap {
-    overflow: hidden;
-    margin-top: -40px;
-  }
-}
 
 
 

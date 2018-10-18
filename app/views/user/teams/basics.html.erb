@@ -1,162 +1,72 @@
 
 <div class="container">
-  <div class="col-md-3">
-    <%= render 'partial/verticalnavbar'%>
-  </div>
-  <div class="col-md-9"> 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="text-center">
-            <span style="font-size:18px;">基本情報</span>
-        </div>
-      </div>
-
-      <div class="panel-body">
-
-        <%= form_for @team, url: user_team_path(@team) do |f| %>
-          <div class="form-group row">
-            <%= f.label :sports_name, "スポーツの種類", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
-              <%= f.collection_select(:sport_id, Sport.all, :id, :name)%>
-            </div>
+  <%= render 'partial/verticalnavbar'%>
+  <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="text-center">
+            <span style="font-size:24px;">基本情報</span>
           </div>
+        </div>
+        <div class="panel-body">
 
-          <div class="form-group row">
-            <%= f.label :name, "チーム名", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+          <%= form_for @team, url: user_teams_path do |f| %>
+            <%= f.label :sport_id, "スポーツの種類", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
+            <%= f.collection_select(:sport_id, Sport.all, :id, :name, {} ,{:class => "form-control"}) %>
+            </div>
+
+            <%= f.label :name, "チーム名", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :name , class: "form-control" %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :profile_image, "プロフィール画像", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
-              <%= f.attachment_field :profile_image %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <%= f.label :practice_day, "活動日", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+            <%= f.label :practice_day, "活動日", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :practice_day , class: "form-control" %>
             </div>
-          </div>
 
-
-          <div class="form-group row">
-            <%= f.label :practice_time, "活動時間", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+            <%= f.label :practice_time, "活動時間", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :practice_time, class: "form-control" %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :number_of_members, "メンバー数", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+
+            <%= f.label :number_of_members, "メンバー数", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :number_of_members , class: "form-control" %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :age_bracket, "メンバーの年齢層", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+
+            <%= f.label :age_bracket, "メンバーの年齢層", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :age_bracket , class: "form-control" %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :establishment_year, "チーム設立年", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
-              <%= f.date_select :establishment_year , discard_day: true, discard_month: true, class: "form-control" %>
+
+            <%= f.label :establishment_year, "チーム設立年", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
+              <%= f.date_select :establishment_year , {discard_day: true, discard_month: true}, {:class => "form-control"} %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :homepage, "チームのホームページ", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+            <%= f.label :homepage, "チームのホームページ", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_field :homepage , class: "form-control" %>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <%= f.label :description, "アピールポイント", class: "col-xs-3 col-form-label" %>
-            <div class="col-xs-9">
+
+            <%= f.label :description, "アピールポイント", class: "col-xs-12 col-form-label" %>
+            <div class="col-xs-12">
               <%= f.text_area :description , class: "form-control" %>
             </div>
-          </div>
 
-          <br>
-      
-          <div class="actions text-center">
-              <%= f.submit "更新する", class: "btn btn-danger" %>
-          </div>
-        <% end %>
+            <div class="actions text-center">
+                <%= f.submit "作成", class: "btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function () {
-  Dropzone.autoDiscover = false;
-  //photos_controller.rbのcreateアクションが呼ばれる
-  $("#my-dropzone").dropzone({
-    maxFilesize: 200,// MB
-    addRemoveLinks: true,//削除リンク,Cancelリンクを全てのpreviewファイルに付ける。 
-    paramName: 'photo[image]',// パラメータの名前
-    success: function(file, response) {
-      // file.previewElementでpreview要素のhtmlにアクセスできる
-      //add .dz-success class to file.previewElement 
-      $(file.previewElement).addClass('dz-success');
-      //add response.uploadId to .dz-remove class
-      $(file.previewElement).find('.dz-remove').attr('id', response.photoId);
-    },
-    removedfile: function(file) {
-      // 削除選択されたfileのidを取得
-      var id = $(file.previewTemplate).find('.dz-remove').attr('id');
-      //call photos_controler.rb destroy action
-      $.ajax({
-        type: 'DELETE',
-        url: "photos/" + id,
-        success: function(data) {
-          console.log(data.message);
-        }
-      });
 
-      var previewElement;
-      // 条件式 ? 式1 : 式2　条件式の値がtrue=>式1、false=>式2返します。
-      //parentNode => 親ノード（一つ上のhtml要素)を取得.
-      //(void 0) => 何も処理しない
-      // リスト（親ノード）から、プレビュー要素を消すという記述
-      return (previewElement = file.previewElement) != null ? (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
-    },
-    // init executed at first when Page loaded
-    init: function() {
-      //this equal dropzone
-      var me = this;
-
-      //meに"complete"イベントを定義
-      me.on("complete", function(file) {
-       $(file.previewTemplate).find('.dz-remove').text("削除する");
-      }); 
-      //call list function in photos_controller.rb with get method
-      $.ajax({
-       type: "GET",
-       url: "photos/list",
-       data: {'team_id': <%= @team.id %>},
-           dataType: 'json',
-       success: function(data){
-           $.each(data.images, function(key, value) {
-             if (data.images != undefined && data.images.length > 0) {
-               me.emit("addedfile", value); //addedfileイベントをvalueのデータで実行する
-               me.emit("thumbnail", value, value.src);//thumbnailイベントをvalueのデータで実行する
-               me.emit("complete", value);  //completeイベントをvalueのデータで実行する
-               $(value._removeLink).attr("id", value.id); //valueの_removeLinkのidにvalue.idを追加
-             }
-           });
-       }
-      });
-    }
-  });
-});
-</script>

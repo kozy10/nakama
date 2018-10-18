@@ -10,20 +10,21 @@
 　　<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   </head>
 
-  <div class="wrap">
+  
     <body>
+      <div class="wrap">
         <%= render 'partial/header' %>
-      <%= yield %>
+        <%= yield %>
         <%= render 'partial/footer' %>
 
-      <% unless flash.empty? %>
-        <script type="text/javascript">
-          <% flash.each do |f| %>
-            <% type=f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-            toastr['<%= type %>']('<%= f[1] %>');
-          <% end %>
-        </script>
-      <% end %>
+        <% unless flash.empty? %>
+          <script type="text/javascript">
+            <% flash.each do |f| %>
+              <% type=f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+              toastr['<%= type %>']('<%= f[1] %>');
+            <% end %>
+          </script>
+        <% end %>
+      </div>
     </body>
-  </div>
 </html>

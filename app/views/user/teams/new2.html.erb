@@ -1,0 +1,87 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="text-center">
+            <span style="font-size:24px;">新しいチームを掲載する</span>
+          </div>
+        </div>
+
+        <div class="panel-body">         
+          <%= form_for @team, url: user_teams_path do |f| %>
+            <div class="form-group row">
+              <%= f.label :sport_id, "スポーツの種類", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.collection_select(:sport_id, Sport.all, :id, :name) %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :name, "チーム名", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :name , class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :practice_day, "活動日", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :practice_day , class: "form-control" %>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <%= f.label :practice_time, "活動時間", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :practice_time, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :number_of_members, "メンバー数", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :number_of_members , class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :age_bracket, "メンバーの年齢層", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :age_bracket , class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :establishment_year, "チーム設立年", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.date_select :establishment_year , discard_day: true, discard_month: true, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :homepage, "チームのホームページ", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_field :homepage , class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :description, "アピールポイント", class: "col-xs-3 col-form-label" %>
+              <div class="col-xs-9">
+                <%= f.text_area :description , class: "form-control" %>
+              </div>
+            </div>
+            <br>
+        
+            <div class="actions text-center">
+                <%= f.submit "更新", class: "btn btn-danger btn-lg" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

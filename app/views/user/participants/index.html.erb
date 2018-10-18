@@ -28,9 +28,9 @@
 		              	  <%= attachment_image_tag practice.team, :profile_image, :fill, 280, 280, format: 'jpeg', fallback: "/images/rio.jpg", class: "img-responsive" %>
 		              	</div>
 		              	<div class="col-xs-8">
-		              		<h6>
+		              		<h5>
 		              			<%= link_to practice.team.name, user_team_path(practice.team), :style => "color:teal;" %>
-		              		</h6>
+		              		</h5>
 		              	</div>
 		              </div>
 		              <div class="row">
@@ -39,23 +39,14 @@
 	                	</div>
 	              	</div>
 	              		
-		               <h6><span class="glyphicon glyphicon-map-marker"></span><%= practice.location %></h6>
+		               <h5><span class="glyphicon glyphicon-map-marker"></span><%= practice.location %></h5>
 	                
 	              </div>
 	              <div class="col-xs-4">
-	              	<div class="row">
-	              		<div class="col-xs-12">
-			                <br>
-			                <h6>
-			                	<%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
-			                </h6>
-			              </div>
-		              </div>
-		              <div class="row">
-		              	<div class="col-xs-12">
-		                	<%= link_to "キャンセル", user_team_practice_participants_path(team_id: practice.team.id, practice_id: practice.id), method: 'post', class: "btn btn-success" %>
-		                </div>
-		              </div>
+	                <h5>
+	                	<%= link_to "参加者", user_team_practice_participants_path(team_id: practice.team_id,practice_id: practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= practice.limited_participants %> 人
+	                </h5>
+		                <%= link_to "キャンセル", user_team_practice_participants_path(team_id: practice.team.id, practice_id: practice.id), method: 'post', class: "btn btn-success" %>
 	            	</div>
 	            </div>
 	          </li>

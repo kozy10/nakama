@@ -93,7 +93,7 @@
 			<% if @photos %>
 				<% @photos.each do |photo| %>
 				  <div class="col-xs-4">
-						<%= image_tag photo.image.url(), style: "width:100%;", class: "img-rounded teamphotos" %>
+				  	<%= link_to(image_tag(photo.image.url(), style: "width:100%;"), photo.image.url(), data: { lightbox: "example-set"}) %>   
 					</div>
 		    <% end %>
 			<% else %>

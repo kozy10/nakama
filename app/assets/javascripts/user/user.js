@@ -1,5 +1,4 @@
 //= require jquery
-
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require dropzone
@@ -7,6 +6,7 @@
 //= require toastr
 //= require turbolinks
 //= require refile
+//= require lightbox
 //= require_tree .
 
 /*global toastr*/

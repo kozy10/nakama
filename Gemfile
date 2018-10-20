@@ -33,6 +33,7 @@ gem 'impressionist'
 gem 'gretel'
 gem 'toastr-rails'
 gem 'rake'
+gem 'dotenv-rails'
 
 group :production do
   gem 'json'

@@ -51,13 +51,19 @@ class User::TeamsController < User::UserBase
 		# if Team.where(sport_id: @team.sport_id).near(geolocation, 3) != 0
 		@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(4)
 		@arrteams = @teams.to_a
+		#自分のチームが表示されないようにする
 		@nearteams = @arrteams.from(1)
-		
 	end
 
 	def update
     @team.update(team_params)
     redirect_back(fallback_location: root_path)
+  end
+
+  def destroy
+  	@team = Team.find(params[:id])
+  	@team.destroy
+  	redirect_to user_manages_path
   end
 
   def basics

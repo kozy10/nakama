@@ -29,7 +29,7 @@ class User::PracticesController < User::UserBase
 	def update
 		@practice = Practice.find(params[:id])
 		@practice.update(practice_params)
-		redirect_to edit_user_team_practice_path(@practice)
+		redirect_to user_manage_path(params[:team_id])
 	end
 
 	def join

@@ -1,8 +1,9 @@
 
-<div class="container-fluid">
-	<div class="col-md-10 col-md-offset-1">
+<div class="container">
+<div class="row">
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
 	<%= link_to @team.name, user_team_path(@team), :style => "color:teal; font-size:23px;", class: "text-center" %>
-  <%= link_to "チーム情報の編集", user_manage_team_basics_path(@team), class: "btn btn-primary pull-right" %>
+  <%= link_to "チーム情報の編集", user_manage_team_basics_path(@team), class: "pull-right", :style => "color:teal;" %>
 
 	<div class="panel panel-default margin-top-10">
 		<div class="panel-heading">
@@ -84,6 +85,6 @@
 		    	<p><%= link_to "チーム削除する", user_team_path(@team), method: :delete, class: "btn btn-danger" %></p>
 		</div>
 	</div>
-    
+  </div>
   </div>
 </div>

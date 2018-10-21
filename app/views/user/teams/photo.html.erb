@@ -1,25 +1,27 @@
-<div class="container-fluid">
+<div class="container">
   <div class="col-md-3">
     <%= render 'partial/verticalnavbar'%>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="text-center">
-        <span style="font-size:24px;">アルバムの編集</span>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">アルバムの編集</span>
+        </div>
       </div>
-    </div>
-    <div class="panel-body">          
-      <%= form_for @photo, url: user_photos_path, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %>
-        <%= f.hidden_field :team_id, value: @team.id %>
-        <div class="dz-message needsclick">
-          <div class="btn btn-success">クリックして写真をアップロード</div>
-        </div>
-        <div class="fallback">
-          <%= f.file_field :image %>
-          <%= f.submit "Upload image" %>
-        </div>
-      <% end %>
+      <div class="panel-body">          
+        <%= form_for @photo, url: user_photos_path, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %>
+          <%= f.hidden_field :team_id, value: @team.id %>
+          <div class="dz-message needsclick">
+            <div class="btn btn-success">クリックして写真をアップロード</div>
+          </div>
+          <div class="fallback">
+            <%= f.file_field :image %>
+            <%= f.submit "Upload image" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

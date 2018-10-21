@@ -1,9 +1,9 @@
-
+<div class="container">
 	<div class="row">
-			<%= attachment_image_tag @team, :profile_image, :fill, 800, 400, format: 'jpeg', fallback: "/images/no_image.jpg", class: "img-responsive" %>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-body">
+		<div class="col-md-7">
+			<%= attachment_image_tag @team, :profile_image, :fill, 991, 600, format: 'jpeg', fallback: "/images/no_image.jpg", class: "img-responsive" %>
+		</div>
+		<div class="col-md-5 ">
 			<h2><%= @team.name%></h2>
 			<h4>スポーツ: <%= @team.sport.name %></h4>
 			<h4>活動場所: <%= @team.address %></h4>
@@ -15,112 +15,116 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	
+	<div class="margin-top-20">
 		<span style="font-size: 18px">次回の練習</span>
 		<span style="font-size: 15px"><%= link_to "すべての練習", user_team_practices_path(@team), :style => "color:teal;", class: "pull-right" %></span>
-		<div class="well">
-			<% if @practice %>
-        <div class="row">
-          <div class="col-xs-5">
-            <%= @practice.start_time.to_s(:datetime_jp)%>から
-            <br>
-            <span class="team-title"><%= @practice.title %></span>
-          </div>
-          <div class="col-xs-4">
-            場所: <%= @practice.location %>
-            <br>
-            <%= link_to "参加者", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人
-          </div>
-          <div class="col-xs-3">
-          	<% if @participant %>
-          		<%= link_to "参加をキャンセル", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
-          	<% else %>
-            <%= link_to "参加する", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
-            <% end %>
-          </div>
-        </div>
-    	<% else %>
-    		<h4>今後の練習の予定はありません</h4>
-    	<% end %>
-    </div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<h4>チームの概要</h4>
-				<table class="table bg-white">
-					<tbody>
-						<tr>
-							<th style="width: 35%">活動日</th>
-							<td><%= @team.practice_day %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">練習時間</th>
-							<td><%= @team.practice_time %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">メンバー数</th>
-							<td><%= @team.number_of_members %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">メンバーの年齢層</th>
-							<td><%= @team.age_bracket %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">ホームページ</th>
-							<td><%= @team.homepage %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">説明</th>
-							<td><%= @team.description %></td>
-						</tr>
-						<tr>
-							<th style="width: 35%">最終更新日</th>
-							<td><%= @team.updated_at.to_s(:default_date) %></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<span style="font-size: 18px">アルバム （<%= @number_of_photos %>）枚</span>
-				<span style="font-size: 15px" class="pull-right">すべての写真を見る</span>
-			</div>
-		</div>
-
-		<div class="well col-xs-12">
-			<% if @photos %>
-				<% @photos.each do |photo| %>
-				  <div class="col-xs-4">
-				  	<%= link_to(image_tag(photo.image.url(), style: "width:100%;"), photo.image.url(), data: { lightbox: "example-set"}) %>   
-					</div>
-		    <% end %>
-			<% else %>
-				<div class="well">
-					<h4>写真はありません</h4>
-				</div>
-			<% end %>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<h4 style="font-size: 18px">近くのチーム（<%= @team.sport.name %>）</h4>
-			</div>
-		</div>
-
-		<div class="row">
-			<% @nearteams.each do |team| %>
-	      <div class="col-xs-4">
-	        <div class="panel panel-default center-block">
-	          <%= link_to user_team_path(team) do %>
-	            <%= attachment_image_tag team, :profile_image, :fill, 300, 210, format: 'jpeg', fallback: "/images/no_image_100x70.jpg", style: "width:100%; height:70%;", class: "img-responsive" %>
-	            <div class="panel-body">
-	              <p><span class="glyphicon glyphicon-map-marker"><%= team.address %></p>
-	              <h4><%= team.name %></h4>
-	            </div>
-	          <% end %>
-	        </div>
-	      </div>
-	    <% end %>
-	  </div>
 	</div>
+	
+	
+	<div class="well">
+		<% if @practice %>
+      <div class="row">
+        <div class="col-xs-5">
+          <%= @practice.start_time.to_s(:datetime_jp)%>から
+          <br>
+          <span class="team-title"><%= @practice.title %></span>
+        </div>
+        <div class="col-xs-4">
+          場所: <%= @practice.location %>
+          <br>
+          <%= link_to "参加者", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人
+        </div>
+        <div class="col-xs-3">
+        	<% if @participant %>
+        		<%= link_to "参加をキャンセル", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
+        	<% else %>
+          <%= link_to "参加する", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), method: 'post', class: "btn btn-danger col-xs-12" %>
+          <% end %>
+        </div>
+      </div>
+  	<% else %>
+  		<h4>今後の練習の予定はありません</h4>
+  	<% end %>
+  </div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>チームの概要</h4>
+			<table class="table bg-white">
+				<tbody>
+					<tr>
+						<th style="width: 35%">活動日</th>
+						<td><%= @team.practice_day %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">練習時間</th>
+						<td><%= @team.practice_time %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">メンバー数</th>
+						<td><%= @team.number_of_members %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">メンバーの年齢層</th>
+						<td><%= @team.age_bracket %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">ホームページ</th>
+						<td><%= @team.homepage %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">説明</th>
+						<td><%= @team.description %></td>
+					</tr>
+					<tr>
+						<th style="width: 35%">最終更新日</th>
+						<td><%= @team.updated_at.to_s(:default_date) %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<span style="font-size: 18px">アルバム （<%= @number_of_photos %>）枚</span>
+			<span style="font-size: 15px" class="pull-right">すべての写真を見る</span>
+		</div>
+	</div>
+
+	<div class="well col-xs-12">
+		<% if @photos %>
+			<% @photos.each do |photo| %>
+			  <div class="col-xs-4">
+			  	<%= link_to(image_tag(photo.image.url(), style: "width:100%;"), photo.image.url(), data: { lightbox: "example-set"}) %>   
+				</div>
+	    <% end %>
+		<% else %>
+			<div class="well">
+				<h4>写真はありません</h4>
+			</div>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h4 style="font-size: 18px">近くのチーム（<%= @team.sport.name %>）</h4>
+		</div>
+	</div>
+
+	<div class="row">
+		<% @nearteams.each do |team| %>
+      <div class="col-xs-4">
+        <div class="panel panel-default center-block">
+          <%= link_to user_team_path(team) do %>
+            <%= attachment_image_tag team, :profile_image, :fill, 300, 210, format: 'jpeg', fallback: "/images/no_image_100x70.jpg", style: "width:100%; height:70%;", class: "img-responsive" %>
+            <div class="panel-body">
+              <p><span class="glyphicon glyphicon-map-marker"><%= team.address %></span></p>
+              <h4><%= team.name %></h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

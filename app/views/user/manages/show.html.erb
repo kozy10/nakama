@@ -48,8 +48,12 @@
 		    			<div class="panel-body">
 	    					<h5><%= other.name %>さんとのメッセージ</h5>
 	    					<%= link_to user_conversation_messages_path(conversation) do %>
-                  <p><%= conversation.messages.last.body %></p>
-                  <span class="pull-right"><%= conversation.messages.last.message_time %></span>
+		    					<% if !conversation.messages.blank? %>
+	                  <p><%= conversation.messages.last.body %></p>
+	                  <span class="pull-right"><%= conversation.messages.last.message_time %></span>
+	                <% else %>
+	                	<p>メッセージはありません</p>
+	                <% end %>
               	<% end %>
 			    		</div>
 			    <% end %>

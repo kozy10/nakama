@@ -42,7 +42,7 @@ class User::TeamsController < User::UserBase
 		@organizer = User.find(@team.organizer_id)
 		@practice = Practice.next(@team)
 		@participants_number = Participant.where(practice_id: @practice.id).count if @practice.present?
-		@participant = current_user.participants.where(practice_id: @practice.id).first if @practice.present?
+		@participant = current_user.participants.where(practice_id: @practice.id).first if user_signed_in? && @practice.present?
 		@photos = Photo.where(team_id: @team.id) 
 		@number_of_photos = Photo.where(team_id: @team.id).count
 

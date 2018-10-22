@@ -12,61 +12,62 @@
         </div>
         <div class="margin-top-10">
           <%= form_tag user_search_path, method: :get do %>
-            <div class="col-xs-4 col-md-6 padding-right-0">
+            <div class="col-xs-4 col-sm-4 col-md-5 padding-right-0">
               <%= text_field_tag :search, params[:search], placeholder: "住所を入力", class: "form-control",id:"top-search-form" %>
               <%= hidden_field_tag :lat %>
               <%= hidden_field_tag :lng %>
             </div>
-    　　　　　<div class="col-xs-3 col-md-2 padding-right-0">
+    　　　　　<div class="col-xs-3 col-sm-2 col-md-2 padding-right-0">
               <%= select_tag :sport_id, options_from_collection_for_select(@sports, :id, :name), prompt: "スポーツ", class: "form-control sport second-row" %>
             </div>
-            <div class="col-xs-2 col-md-1">
+            <div class="col-xs-2 col-sm-1 col-md-1">
               <%= submit_tag "検索", class: "btn btn-warning margin-top-minus" %>
             </div>
           <% end %>
         </div>
-      </div>
 
-      
-        <div class="col-xs-12 ">
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav header-nav">
-                  <% if (!user_signed_in?) %>
-                    <!-- ログインしていない時 -->
-                    <li><%= link_to "アカウント作成", new_user_registration_path %></li>
-                    <li><%= link_to "ログイン", new_user_session_path %></li>
-                  <% else %>
-                    <!-- ログインしている時 -->
-                    <li><span class="glyphicon glyphicon-home"><%= link_to " ホーム", root_path %></span></li>
-                    <li><span class="glyphicon glyphicon-list-alt"><%= link_to " 練習予定", user_participants_path %></span></li>
-                    <li><span class="glyphicon glyphicon-comment"><%= link_to " メッセージ", user_conversations_path %></span></li>
-                    <li>
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-flag"> チーム</span><span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "チームを管理する", user_manages_path %></li>
-                        <li><%= link_to "チームを作る", new_user_team_path %></li>
-                      </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">
-                        <%= current_user.name %></span>
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
-                        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                      </ul>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
+      <!-- ログインしていない時 -->
+        <% if (!user_signed_in?) %>
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav header-nav">
+                <li><%= link_to "アカウント作成", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+              </ul>
             </div>
           </div>
-        </div>
-      
+        <% else %>
+        <!-- ログインしている時 -->
+          <div class="col-xs-12 ">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav header-nav-sign">
+                <li><span class="glyphicon glyphicon-home"><%= link_to " ホーム", root_path %></span></li>
+                <li><span class="glyphicon glyphicon-list-alt"><%= link_to " 練習予定", user_participants_path %></span></li>
+                <li><span class="glyphicon glyphicon-comment"><%= link_to " メッセージ", user_conversations_path %></span></li>
+                <li>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-flag"> チーム</span><span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "チームを管理する", user_manages_path %></li>
+                    <li><%= link_to "チームを作る", new_user_team_path %></li>
+                  </ul>
+                </li>
+                
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">
+                    <%= current_user.name %></span>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
+                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </nav>
   </div>
 </header>

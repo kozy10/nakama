@@ -1,12 +1,12 @@
 
-<div class="container-fluid">
-  <h4>チーム</h4>
+<div class="container">
+  <h4><%= params[:search] %>付近のチーム</h4>
   <div class="row">
     <% @arrteams.each do |team| %>
-      <div class="col-xs-6">
+      <div class="col-xs-6 col-md-4">
         <div class="panel panel-default center-block">
           <%= link_to user_team_path(team) do %>
-            <%= attachment_image_tag team, :profile_image, :fill, 280, 180, format: 'jpeg', fallback: "/images/rio.jpg", class: "img-responsive" %>
+            <%= attachment_image_tag team, :profile_image, :fill, 380, 200, format: 'jpeg', fallback: "/images/rio.jpg", class: "img-responsive" %>
             <div class="panel-body">
               <h6><%= team.sport.name %></h6>
               <h5><%= team.name %></h5>
@@ -24,8 +24,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6 col-xs-12">
+  <div class="row margin-top-20">
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
       <div class="map" id="map" style="height: 500px;"></div>
     </div>
   </div>
@@ -62,10 +62,6 @@
       marker.addListener('click', function() {
          var content = "<div>" + '<a href="teams/' + <%= team.id %> +'">' + '<br>' + "<h5><%= team.name %></h5>" + "</a>" + "</div>";
 
-        
-
-        
-        
 
         // infowindowを作成
         var infowindow = new google.maps.InfoWindow({
@@ -77,12 +73,7 @@
         infowindows.push(infowindow);
 
         //infowindowが完全に読み込まれた時に実行される処理
-        google.maps.event.addListener(infowindow, 'domready', function() {
-          $('.average_rating_listing').raty({
-            path: '/assets',
-            readOnly: true,
-          });
-        });
+        
       });
               
     <% end %>

@@ -43,4 +43,6 @@ Rails.application.routes.draw do
 	namespace :admin, path: 'admin' do
 		resources :sports
 	end
+
+	get '/test' => 'user/top#test'
 end

@@ -8,6 +8,28 @@
 @import "dropzone/dropzone";
 @import 'lightbox';
 
+//google maps api
+#map {
+  height: 400px;
+}
+
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+
+
+
+
 //margin
 .margin-right-10 {
   margin-right: 10px;

@@ -5,28 +5,26 @@
     
     <%= stylesheet_link_tag    'user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
+    <%= javascript_include_tag 'user/user', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
 　　<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   </head>
 
   
-    <body>
-      <div class="wrap">
-        <%= render 'partial/header' %>
-        <%= yield %>
-        <%= render 'partial/footer' %>
+  <body>
+    <div class="wrap">
+      <%= render 'partial/header' %>
+      <%= yield %>
+      <%= render 'partial/footer' %>
 
-        <% unless flash.empty? %>
-          <script type="text/javascript">
-            <% flash.each do |f| %>
-              <% type=f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-              toastr['<%= type %>']('<%= f[1] %>');
-            <% end %>
-          </script>
-        <% end %>
-      </div>
-
-      <%= javascript_include_tag 'user/user', 'data-turbolinks-track': 'reload' %>
-    </body>
+      <% unless flash.empty? %>
+        <script type="text/javascript">
+          <% flash.each do |f| %>
+            <% type=f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+            toastr['<%= type %>']('<%= f[1] %>');
+          <% end %>
+        </script>
+      <% end %>
+    </div>
+  </body>
 </html>

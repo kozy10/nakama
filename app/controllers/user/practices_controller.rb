@@ -16,7 +16,7 @@ class User::PracticesController < User::UserBase
 		@team = Team.find(params[:team_id])
 		@practice = @team.practices.build(practice_params)
 		@practice.save!
-		redirect_to user_manage_path(@team)
+		redirect_to user_manage_path(@team), notice: "練習を作成しました"
 	end
 
 	def show
@@ -29,7 +29,7 @@ class User::PracticesController < User::UserBase
 	def update
 		@practice = Practice.find(params[:id])
 		@practice.update(practice_params)
-		redirect_to user_manage_path(params[:team_id])
+		redirect_to user_manage_path(params[:team_id]), notice: "練習を更新しました"
 	end
 
 	def join

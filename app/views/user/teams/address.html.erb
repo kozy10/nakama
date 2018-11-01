@@ -10,7 +10,9 @@
         </div>
       </div>
 
-      <div class="panel-body">          
+      <div class="panel-body">
+
+        <p>※場所または住所を入力し、Google Map上にマーカーが表示されることを確認してください。</p>          
         <%= form_for @team, url: user_team_path(@team) do |f| %>
           <div class="col-xs-12 col-md-8">
               <%= f.text_field :address, placeholder: "例: 代々木体育館", class: "form-control", id: "pac-input", required: "true" %>
@@ -57,7 +59,8 @@
     autocomplete.bindTo('bounds', map);
 
     // Set the data fields to return when the user selects a place.
-   
+    autocomplete.setFields(
+        ['address_components', 'geometry', 'icon', 'name']);
 
     var infowindow = new google.maps.InfoWindow();
     var infowindowContent = document.getElementById('infowindow-content');
@@ -74,7 +77,7 @@
       if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
-        window.alert("No details available for input: '" + place.name + "'");
+        window.alert(place.name + "は設定できません。Google Map上にマーカーが表示されることを確認してください。");
         return;
       }
 

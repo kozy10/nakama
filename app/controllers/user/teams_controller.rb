@@ -53,6 +53,8 @@ class User::TeamsController < User::UserBase
 		@arrteams = @teams.to_a
 		#自分のチームが表示されないようにする
 		@nearteams = @arrteams.from(1)
+		impressionist(@team, nil, :unique => [:session_hash])
+
 	end
 
 	def update

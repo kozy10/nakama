@@ -39,7 +39,6 @@
           <br>
         	<%= link_to "参加者", user_team_practice_participants_path(team_id: @team.id, practice_id: @practice.id), :style => "color:teal;" %>: <%= @participants_number %> / <%= @practice.limited_participants %> 人
 
-        	参加者: 0 / <%= @practice.limited_participants %> 人
         </div>
         <div class="col-xs-3">
         	<% if @participant %>

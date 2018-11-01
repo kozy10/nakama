@@ -18,39 +18,42 @@
           <% end %>
         </div>
       </div>
-      <div id="chat">
-        <% @messages.each do |message| %>
-          <% if message.user == current_user %>
-            <div class="col-xs-9">
-              <div class="popover left show" style="position:relative; max-width:100%;">
-                <div class="arrow"></div>
-                <div class="popover-content">
-                  <span style="font-size: 12px;"><%= message.body %></span>
-                  <p style="font-size: 12px;" class="text-right"><%= message.message_time %></p>
-                </div>
+      
+      
+      <% @messages.each do |message| %>
+        <% if message.user == current_user %>
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="popover left show" style="position:relative; max-width:100%;">
+              <div class="arrow"></div>
+              <div class="popover-content">
+                <span style="font-size: 12px;"><%= message.body %></span>
+                <p style="font-size: 12px;" class="text-right"><%= message.message_time %></p>
               </div>
-            </div>
-            <div class="col-xs-3 speaker">
-                <%= image_tag("/images/no_image.jpg", :width => "82px", :height => "82px", :class => "center-block") %>
-                <div class="text-center"><%= message.user.name %></div>
             </div>
           </div>
-          <% else%>
-            <div class="col-xs-3 speaker">
-              <%= message.user.name %>
-            </div>
-            <div class="col-xs-9">
-              <div class="popover right show" style="position:relative; max-width:100%;">
-                <div class="arrow"></div>
-                <div class="popover-content">
-                  <span style="font-size: 12px;"><%= message.body %></span>
-                  <p style="font-size: 12px;" class="text-right"><%= message.message_time %></p>
-                </div>
+          <div class="col-xs-3 speaker margin-top-40">
+            <%= message.user.name %>
+          </div>
+        </div>
+        <% else%>
+        <div class="row">
+          <div class="col-xs-3 speaker margin-top-40 text-right">
+            <%= message.user.name %>
+          </div>
+          <div class="col-xs-9">
+            <div class="popover right show" style="position:relative; max-width:100%;">
+              <div class="arrow"></div>
+              <div class="popover-content">
+                <span style="font-size: 12px;"><%= message.body %></span>
+                <p style="font-size: 12px;" class="text-right"><%= message.message_time %></p>
               </div>
             </div>
-          <% end %>
+          </div>
+        </div>
         <% end %>
-      </div>
+      <% end %>
+      
     </div>
   </div>
 </div>

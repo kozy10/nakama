@@ -11,14 +11,12 @@
               <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
                 <% if !conversation.messages.last.blank? %>
                   <%= link_to user_conversation_messages_path(conversation) do %>
-                    <div class="row">
+                    <div class="row margin-bottom-20 well margin-RL-0">
                       <div class="col-xs-12">
                         <strong><%= other.name %>さん</strong> 
                         <span class="pull-right" ><%= conversation.messages.last.created_at.to_s(:default_yeardate) %>
                         </span>
                       </div>
-                    </div>
-                    <div class="row">
                       <div class="col-xs-12">
                         <span style="font-size: 12px;"><%= conversation.messages.last.body %></span>
                       </div>

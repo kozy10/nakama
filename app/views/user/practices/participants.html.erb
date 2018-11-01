@@ -1,10 +1,21 @@
 <div class="container">
-	<% if @participant %>
-		<% @participants.each do |participant| %>
-		 <%= participant.user.name %>
-		<% end %>
-	<% else %>
-		<h4 class="text-center">現在、参加者はいません</h4>
-	<% end %>
-
+	<div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="text-center">
+      	<span style="font-size:18px;">参加者一覧</span>
+      </div>
+    </div>
+    <div class="panel-body">
+			<% if @participants %>
+				<% @participants.each do |participant| %>
+						<div class="col-xs-6 text-center">
+	          	<h4><%= participant.user.name %>さん</h4>
+	          </div>
+	        
+				<% end %>
+			<% else %>
+				<h4 class="text-center">現在、参加者はいません</h4>
+			<% end %>
+		</div>
+	</div>
 </div>

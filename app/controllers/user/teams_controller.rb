@@ -11,16 +11,29 @@ class User::TeamsController < User::UserBase
       @latitude = params["lat"]
       @longitude = params["lng"]
       geolocation = [@latitude,@longitude]
+      @teams = Team.near(geolocation, 3, order: 'distance')
+	    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
+	    @teams = @teams.limit(6)
+	    @arrteams = @teams.to_a
     else
       geolocation = Geocoder.coordinates(params[:search])
-      @latitude = geolocation[0]
-      @longitude = geolocation[1]
+      if geolocation
+	      @latitude = geolocation[0]
+	      @longitude = geolocation[1]
+	      @teams = Team.near(geolocation, 3, order: 'distance')
+		    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
+		    @teams = @teams.limit(6)
+		    @arrteams = @teams.to_a
+	    else
+	    	redirect_back(fallback_location: root_path)
+        flash[:error] = '不適切な住所または地名です'
+      end
     end
-    @teams = Team.near(geolocation, 3, order: 'distance')
-    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
-    @teams = @teams.limit(6)
-    @arrteams = @teams.to_a
+    
   end
+
+  # redirect_back(fallback_location: root_path)
+  # flash[:error] = '削除が完了しました'
 
 	def index
 		@teams = Team.where(organizer_id: current_user.id)

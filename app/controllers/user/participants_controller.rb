@@ -5,7 +5,6 @@ class User::ParticipantsController < User::UserBase
 		@practices.each do |practice|
 			@participants_number = Participant.where(practice_id: practice.id).count
 		end
-		
 	end
 
 	def create

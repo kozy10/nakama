@@ -7,13 +7,16 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <div class="form-group">
-          <%= f.label :メールアドレス %><br />
+          <%= f.label :メールアドレス %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
+
+        <br>
 
         <div class="form-group">
           <%= f.label :パスワード %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          (<%= link_to "パスワードをお忘れの場合はこちら", new_user_password_path, class: "text-right" %>)
         </div>
 
         <div class="actions">
@@ -22,6 +25,8 @@
         <br>
 
         <%= link_to "登録する", new_user_registration_path %>
+
+        
         <br>
       <% end %>
     </div>

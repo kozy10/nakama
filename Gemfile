@@ -34,6 +34,7 @@ gem 'gretel'
 gem 'toastr-rails'
 gem 'rake'
 gem 'dotenv-rails'
+gem 'rails-i18n'
 
 group :production do
   gem 'json'

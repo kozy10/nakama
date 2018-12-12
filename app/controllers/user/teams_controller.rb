@@ -58,13 +58,14 @@ class User::TeamsController < User::UserBase
 		@photos = Photo.where(team_id: @team.id) 
 		@number_of_photos = Photo.where(team_id: @team.id).count
 
-		geolocation = [@team.latitude,@team.longitude]
-
-		# if Team.where(sport_id: @team.sport_id).near(geolocation, 3) != 0
-		@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(4)
-		@arrteams = @teams.to_a
-		#自分のチームが表示されないようにする
-		@nearteams = @arrteams.from(1)
+		if @team.latitude.present? && @team.longitude.present?
+			geolocation = [@team.latitude,@team.longitude]
+			# if Team.where(sport_id: @team.sport_id).near(geolocation, 3) != 0
+			@teams = Team.where(sport_id: @team.sport_id).near(geolocation, 3, order: 'distance').limit(4) 
+			@arrteams = @teams.to_a
+			#自分のチームが表示されないようにする
+			@nearteams = @arrteams.from(1)
+		end
 		impressionist(@team, nil, :unique => [:session_hash])
 	end
 

@@ -265,6 +265,8 @@ GEM
       railties (>= 5.0, < 6)
     rails-ujs (5.1.0.beta1)
       railties (>= 3.1)
+    rails_autolink (1.1.6)
+      rails (> 3.1)
     railties (5.2.1)
       actionpack (= 5.2.1)
       activesupport (= 5.2.1)
@@ -389,6 +391,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-i18n
   rails-ujs (~> 5.1.0.beta1)
+  rails_autolink
   rake
   refile!
   refile-mini_magick

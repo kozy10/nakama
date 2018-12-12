@@ -1,5 +1,4 @@
 class User::MessagesController < User::UserBase
-
 	before_action :authenticate_user!
   before_action :set_conversation
 
@@ -12,7 +11,6 @@ class User::MessagesController < User::UserBase
     else
       redirect_to conversations_path, alert: "他人のメッセージにアクセスできません"
     end
-
   end
 
   def create

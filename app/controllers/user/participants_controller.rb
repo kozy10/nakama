@@ -1,4 +1,5 @@
 class User::ParticipantsController < User::UserBase
+	before_action :authenticate_user!
 
 	def index
 		@practices = Practice.joins(:participants).where(participants: {user_id: current_user.id}).order("start_time ASC")

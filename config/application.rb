@@ -12,7 +12,10 @@ module Nakama
     config.load_defaults 5.2
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
- 
+    
+    config.to_prepare do
+      DeviseController.respond_to :html, :json, :js
+    end
 
     # 有効にする言語のホワイトリスト
     # config.i18n.available_locales = %i(ja en)

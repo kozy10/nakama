@@ -1,16 +1,16 @@
 module ApplicationHelper
 
-	def breadcrumb(crumbs)
-    return if crumbs.nil?
-    content_tag :ol, class: 'breadcrumb' do
-      crumbs.each_with_index do |crumb, i|
-        if i == crumbs.size - 1
-          concat (content_tag :li, crumb[:title], class: 'breadcrumb-item active')
-        else
-          concat (content_tag :li, (link_to crumb[:title], crumb[:path]), class: 'breadcrumb-item')
-        end
-      end
-    end
+# deviseのformを別のコントローラーで呼ぶためのメソッド
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 
   def active_controller_and_action(controller_name, action_name)

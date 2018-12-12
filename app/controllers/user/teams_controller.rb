@@ -1,6 +1,6 @@
 class User::TeamsController < User::UserBase
 	before_action :set_team, only: [:show, :update, :basics, :address, :photo]
-
+	before_action :authenticate_user!, except: [:search, :show]
 	# def search
 	# 	@teams = @seach_form.search(params[:page])
 	# end
@@ -29,7 +29,6 @@ class User::TeamsController < User::UserBase
         flash[:error] = '不適切な住所または地名です'
       end
     end
-    
   end
 
   # redirect_back(fallback_location: root_path)
@@ -67,7 +66,6 @@ class User::TeamsController < User::UserBase
 		#自分のチームが表示されないようにする
 		@nearteams = @arrteams.from(1)
 		impressionist(@team, nil, :unique => [:session_hash])
-
 	end
 
 	def update
@@ -101,14 +99,12 @@ class User::TeamsController < User::UserBase
 
 	private
 
-	
+		def team_params
+		  params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_time,
+		  	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image)
+		end
 
-  def team_params
-    params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_time,
-    	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image)
-  end
-
-  def set_team
-    @team = Team.find(params[:id]) 
-  end
+		def set_team
+		  @team = Team.find(params[:id]) 
+		end
 end

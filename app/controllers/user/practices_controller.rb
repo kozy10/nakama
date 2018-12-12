@@ -1,4 +1,5 @@
 class User::PracticesController < User::UserBase
+	before_action :authenticate_user!
 
 	def index
 		@team = Team.find(params[:team_id])

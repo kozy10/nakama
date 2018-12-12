@@ -6,7 +6,8 @@
 		<br>
 
     <% if (!user_signed_in?) %>
-		  <%= link_to "登録する", new_user_registration_path, class: "btn btn-warning btn-block" %>
+		  <%= link_to "登録する", new_user_registration_path, remote:true, class: "btn btn-warning btn-block" %>
+      
     <% end %>
 	</p>
 	<%= image_tag("/images/baseball.jpg", :width => "100%", :height => "100%", :class => "active") %>

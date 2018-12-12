@@ -1,4 +1,5 @@
 class User::ManagesController < User::UserBase
+	before_action :authenticate_user!
 	
 	def index
 		@teams = Team.where(organizer_id: current_user.id)

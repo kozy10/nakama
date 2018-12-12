@@ -35,6 +35,9 @@ gem 'toastr-rails'
 gem 'rake'
 gem 'dotenv-rails'
 gem 'rails-i18n'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :production do
   gem 'json'

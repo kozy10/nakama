@@ -57,6 +57,7 @@ class User::TeamsController < User::UserBase
 		@participant = current_user.participants.where(practice_id: @practice.id).first if user_signed_in? && @practice.present?
 		@photos = Photo.where(team_id: @team.id) 
 		@number_of_photos = Photo.where(team_id: @team.id).count
+		@favorite = current_user&.favorites&.find{|favorite| favorite.team_id == @team.id }
 
 		if @team.latitude.present? && @team.longitude.present?
 			geolocation = [@team.latitude,@team.longitude]

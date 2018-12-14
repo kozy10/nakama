@@ -11,6 +11,7 @@
 			<div class=" row d-flex align-items-end col-xs-12">
 				<h3 class="pull-right">
 					<% if (user_signed_in?) %>
+						<%= render 'favorite/button', team: @team, favorite: @favorite %>
 						<%= link_to "メッセージを送る", user_conversations_path(sender_id: current_user.id, recipient_id: @team.organizer_id), method: 'post', class: "btn btn-success btn-lg" %>
 					<% else %>
 						<div class="btn btn-success btn-lg">メッセージを送る</div>

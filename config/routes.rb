@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 			resources :messages
 		end
 		resources :password_resets, only: [:edit]
+		resources :favorites, only: [:index, :create, :destroy]
 		get 'manage-team/:id/basics' => 'teams#basics', as: 'manage_team_basics'
 		get 'manage-team/:id/address' => 'teams#address', as: 'manage_team_address'
 		get 'manage-team/:id/photo' => 'teams#photo', as: 'manage_team_photo'

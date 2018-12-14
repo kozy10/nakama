@@ -1,0 +1,17 @@
+<% if !user_signed_in? %>
+	<button onclick='aleart("お気に入り登録をするには、ログインする必要があります。"); document.activeElement.blur();', class="btn bmd-btn-fab btn-secondary">
+		<i class="material-icons">favorite_border</i>
+	</button>
+<% elsif favorite %>
+	<%= link_to user_favorites_path(team_id: team.id), method: :post, remote: true do %>
+		<%= button_tag class: "btn favorite-active" do %>
+			<i class="material-icons favorite_<%= team.id%>">favorite</i>
+		<% end %>
+	<% end %>
+<% else %>
+	<%= link_to user_favorites_path(team_id: team.id), method: :post, remote: true do %>
+			<%= button_tag class: "btn favorite-inactive" do %>
+				<i class="material-icons favorite_<%= team.id %>">favorite_border</i>
+			<% end %>
+	<% end%>
+<% end %>

@@ -8,6 +8,18 @@
 @import "dropzone/dropzone";
 @import 'lightbox';
 
+.favorite-active {
+  color: red;
+  background-color: #e7e7e7;
+  border-color: #e7e7e7;
+  border-radius: 50%;
+}
+
+.favorite-inactive {
+  background-color: #e7e7e7;
+  border-color: #e7e7e7;
+  border-radius: 50%;
+}
 
 .link-text {
   color: #008489 !important;
@@ -369,7 +381,7 @@ footer {
   }
 
   .header-nav-sign > li {
-    padding: 20px 30px 10px 30px;
+    padding: 20px 20px 10px 20px;
   }
 
   .header-nav-sign {

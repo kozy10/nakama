@@ -1,0 +1,5 @@
+var element = $('.favorite_<%= @favorite.team_id %>');
+element.html('favorite_border');
+element.parent('button').removeClass('favorite-active');
+element.parent('button').addClass('favorite-inactive');
+document.activeElement.blur();

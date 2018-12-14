@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable
 
   has_many :participants
+  has_many :favorites
 
 
   def authenticated?(attribute, token)

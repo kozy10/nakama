@@ -1,6 +1,10 @@
 class User::FavoritesController < User::UserBase
 	before_action :authenticate_user!
 
+	def index
+		@teams = Team.joins(:favorites).where(favorites: {user_id: current_user.id})
+	end
+
 	def create
 		@favorite = current_user.favorites.where(team_id: params[:team_id]).first
 		if @favorite

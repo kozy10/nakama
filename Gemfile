@@ -38,6 +38,7 @@ gem 'rails-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'rails_autolink'
 
 group :production do
   gem 'json'

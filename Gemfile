@@ -40,6 +40,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'rails_autolink'
 gem 'jquery-turbolinks'
+gem 'kaminari'
 
 group :production do
   gem 'json'

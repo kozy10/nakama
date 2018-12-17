@@ -20,9 +20,11 @@ class User::TeamsController < User::UserBase
       if geolocation
 	      @latitude = geolocation[0]
 	      @longitude = geolocation[1]
-	      @teams = Team.near(geolocation, 3, order: 'distance')
-		    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
-		    @teams = @teams.limit(6)
+	      if params[:sport_id].present?
+			  	@teams = Team.near(geolocation, 3, order: 'distance').where(sport_id: params[:sport_id]).page(params[:page]).per(5)
+			  else
+			  	@teams = Team.near(geolocation, 3, order: 'distance').page(params[:page]).per(5)
+			  end
 		    @arrteams = @teams.to_a
 	    else
 	    	redirect_back(fallback_location: root_path)
@@ -30,6 +32,12 @@ class User::TeamsController < User::UserBase
       end
     end
   end
+
+  # if params[:sport_id].present?
+  # 	@teams = Team.near(geolocation, 3, order: 'distance').where(sport_id: params[:sport_id])
+  # else
+  # 	@teams = Team.near(geolocation, 3, order: 'distance')
+  # end
 
   # redirect_back(fallback_location: root_path)
   # flash[:error] = '削除が完了しました'

@@ -39,6 +39,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'rails_autolink'
+gem 'jquery-turbolinks'
 
 group :production do
   gem 'json'

@@ -4,10 +4,11 @@
 //= require dropzone
 //= require private_pub
 //= require toastr
-//= require turbolinks
+
 //= require refile
 //= require lightbox
 //= require_tree .
+//= require remodal.min
 
 /*global toastr*/
 toastr.options = {

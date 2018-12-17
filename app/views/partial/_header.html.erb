@@ -4,9 +4,12 @@
       <div class="row">
         <div class="col-xs-1 col-md-1 image">
           <div class="btn-group" role="group">
-            <div type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <div id="mobile-logo" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <%= image_tag '/images/N_logo_62x62.png', :size => "40x40", class: " pull-left" %>
               <span class="caret pull-right"></span>
+            </div>
+            <div id="non-mobile-logo">
+              <%= image_tag '/images/N_logo_62x62.png', :size => "40x40", class: " pull-left" %>
             </div>
           </div>
         </div>
@@ -20,13 +23,6 @@
     　　　　　<div class="col-xs-3 col-sm-2 col-md-2 padding-right-0">
               <%= render "partial/sports_form" %>
             </div>
-<%
-=begin
-%>
-              <%= select_tag :sport_id, options_from_collection_for_select(@sports, :id, :name), prompt: "スポーツ", class: "form-control sport second-row" %>
-<%
-=end 
-%>
             <div class="col-xs-2 col-sm-1 col-md-1">
               <%= submit_tag "検索", class: "btn btn-warning margin-top-minus" %>
             </div>

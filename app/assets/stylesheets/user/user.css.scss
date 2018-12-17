@@ -15,9 +15,6 @@
 }
 
 
-
-
-
 //favorite
 .favorite-active {
   color: red;
@@ -607,6 +604,14 @@ footer {
 
 
 @media (min-width: 768px) {
+  #mobile-logo {
+    display: none;
+  }
+
+  #non-mobile-logo {
+    margin-top: 6px;
+  }
+
 
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -650,9 +655,10 @@ footer {
 
 // dropzone.jsのcss
 @media (max-width: 768px){
-.dropzone{
-  padding: 0;
-}
+  .dropzone{
+    padding: 0;
+  }
+
   .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete {
     margin-right: 0!important;
     margin-left: 0!important;
@@ -749,6 +755,11 @@ span.listing-title {
 }
 
 @media (max-width: 767px){
+
+  #non-mobile-logo {
+    display: none;
+  }
+
   .row-table, .col-middle{
     display: block;
   }

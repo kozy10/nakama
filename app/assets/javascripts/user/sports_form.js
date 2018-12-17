@@ -2,22 +2,32 @@ $(function () {
   // セレクトボックス毎に処理
   $('select').each(function(i){
 
-    // data-selectを追加
+    // selectにid= select0 を与える
     $(this).attr('id', 'select'+i);
 
     // セレクトボックスの内容をモーダルウィンドウにコピー
     var clone = $(this).clone().appendTo($(this).parent());
-    var remodal_clone = $(clone).wrap('<div data-remodal-id="remodal-select'+i+'" class="remodal remodal-select"></div>').after('<button data-remodal-action="close" class="remodal-close bottom-close"></button>');
+    var remodal_clone = $(clone).wrap('<div data-remodal-id="remodal-select'+i+'" class="remodal remodal-select"></div>').after('<button data-remodal-action="close" class="remodal-close bottom-close"</button>');
 
+    //selectの子要素であるoptionにdata-value属性を与え、liで囲む
     $(remodal_clone).children('option').each(function(){
+      // thisはoption  tag_valueにoptionの持ってるvalue値を代入
       var tag_value = $(this).attr("value");
+      // value属性の持たないオプションをリストから外す
       if ( tag_value == "") {
         $(this).replaceWith('');
-      } else {
+      }
+      else if ( tag_value == "category") {
+        $(this).replaceWith('<h4>'+$(this).html()+'</h4>');
+      }
+      else {
         var tag_value_plus = 'data-value="'+tag_value+'"';
+        console.log( this );
         $(this).replaceWith('<li '+tag_value_plus+'>'+$(this).html()+'</li>');
       }
     });
+
+    //liのかたまりをulで囲む
     $(remodal_clone).each(function(){
       $(this).replaceWith('<ul>'+$(this).html()+'</ul>');
     });

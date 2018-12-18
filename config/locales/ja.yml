@@ -1,4 +1,7 @@
 ja:
+  activerecord:
+    models:
+      team: チーム
   date:
     formats:
       default: "%Y/%m/%d"

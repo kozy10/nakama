@@ -1,6 +1,6 @@
 $(function () {
   // セレクトボックス毎に処理
-  $('select').each(function(i){
+  $('#sports_form').each(function(i){
 
     // selectにid= select0 を与える
     $(this).attr('id', 'select'+i);

@@ -8,12 +8,12 @@ class User::FavoritesController < User::UserBase
 	def create
 		@favorite = current_user.favorites.where(team_id: params[:team_id]).first
 		if @favorite
-			@favorite.destroy!
+			@favorite.destroy! 
 			respond_to do |format|
 				format.js { render :delete }
 			end
 		else
-			@favorite = current_user.favorites.create(team_id: params[:team_id])
+			@favorite = current_user.favorites.create(team_id: params[:team_id]), notice: "お気に入りに追加しました"
 			respond_to do |format|
 				format.js { render :new }
 			end

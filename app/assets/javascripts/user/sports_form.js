@@ -22,7 +22,6 @@ $(function () {
       }
       else {
         var tag_value_plus = 'data-value="'+tag_value+'"';
-        console.log( this );
         $(this).replaceWith('<li '+tag_value_plus+'>'+$(this).html()+'</li>');
       }
     });

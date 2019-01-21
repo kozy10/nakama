@@ -41,6 +41,7 @@ gem 'omniauth-twitter'
 gem 'rails_autolink'
 gem 'jquery-turbolinks'
 gem 'kaminari'
+gem 'browser'
 
 group :production do
   gem 'json'

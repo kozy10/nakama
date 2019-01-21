@@ -41,6 +41,8 @@
     var input = /** @type {!HTMLInputElement} */(
         document.getElementById('top-search-form'));
 
+   
+
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
     
@@ -71,18 +73,9 @@
         infowindow.open(map, this);
         // インフォウィンドウ配列にインフォウィンドウを保存
         infowindows.push(infowindow);
-
-        // this.addListener('mouseout', function() {
-        //   infowindow.close();
-        // });
       });
 
       $(".gm-style-iw").next("div").hide();
-    
-
-      // google.maps.event.addListener(marker, 'click', function() {
-      //   window.location.href = this.url;
-      // });
     <% end %>
   }
 </script>

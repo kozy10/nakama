@@ -86,16 +86,20 @@
   function init() {
     var input = /** @type {!HTMLInputElement} */(
         document.getElementById('top-search-form'));
+    
 
     var autocomplete = new google.maps.places.Autocomplete(input);
-    
+
     autocomplete.addListener('place_changed', function() {
+      // input.value = this.getPlace().name;
       var place = autocomplete.getPlace();
       var lat = place.geometry.location.lat();
       var lng = place.geometry.location.lng();
 
+      // hedden_fieldにlat,lngの値を与える
       document.getElementById('lat').value = lat ;
       document.getElementById('lng').value = lng ;
+      document.getElementById('top-search-form').value = autocomplete.getPlace().name;
 
       if (!place.geometry) {
         window.alert("Autocomplete's returned place contains no geometry");

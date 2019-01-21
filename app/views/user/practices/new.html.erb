@@ -19,16 +19,16 @@
                 </tr>
                 <tr>
                   <th style="width: 35%">開始時刻</th>
-                  <td><%= f.datetime_select :start_time, class: "form-control", :minute_step => 5 %></td>
+                  <td><%= f.datetime_select :start_time, {:minute_step => 5}, {class: "form-control datetime-select"} %></td>
                 </tr>
                 <tr>
                   <th style="width: 35%">終了時刻</th>
-                  <td><%= f.time_select :end_time, class: "form-control", :minute_step => 5 %></td>
+                  <td><%= f.time_select :end_time, {:minute_step => 5}, {class: "form-control datetime-select"} %></td>
                 </tr>
 
                 <tr>
                   <th style="width: 35%">返答期限</th>
-                  <td><%= f.datetime_select :reply_deadline, class: "form-control", :minute_step => 5 %></td>
+                  <td><%= f.datetime_select :reply_deadline, {:minute_step => 5}, {class: "form-control datetime-select"} %></td>
                 </tr>
                 <tr>
                   <th style="width: 35%">場所</th>

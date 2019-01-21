@@ -9,6 +9,21 @@
 @import 'lightbox';
 
 
+//
+.sports-tag {
+  background-color: #f0ad4e;
+  display: inline;
+  color: white;
+  padding: 3px;
+  border-radius: 5%;
+}
+
+//date-selectを縦並びから横並びに
+.datetime-select {
+  width: auto;
+  display: inline-block;
+}
+
 //remodal
 .remodal > ul > h4 {
   margin-top: 20px;

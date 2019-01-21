@@ -11,9 +11,11 @@ class User::TeamsController < User::UserBase
       @latitude = params["lat"]
       @longitude = params["lng"]
       geolocation = [@latitude,@longitude]
-      @teams = Team.near(geolocation, 3, order: 'distance')
-	    @teams = @teams.where(sport_id: params[:sport_id]) if params[:sport_id].present?
-	    @teams = @teams.limit(6)
+      if params[:sport_id].present?
+		  	@teams = Team.near(geolocation, 3, order: 'distance').where(sport_id: params[:sport_id]).page(params[:page]).per(5)
+		  else
+		  	@teams = Team.near(geolocation, 3, order: 'distance').page(params[:page]).per(5)
+		  end
 	    @arrteams = @teams.to_a
     else
       geolocation = Geocoder.coordinates(params[:search])
@@ -111,7 +113,7 @@ class User::TeamsController < User::UserBase
 
 		def team_params
 		  params.require(:team).permit(:name, :establishment_year, :address, :practice_day, :practice_time,
-		  	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image)
+		  	:number_of_members, :age_bracket, :homepage, :description, :latitude, :longitude, :organizer, :sport_id, :profile_image, :place)
 		end
 
 		def set_team

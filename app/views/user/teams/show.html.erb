@@ -3,11 +3,14 @@
 		<div class="col-md-7">
 			<%= attachment_image_tag @team, :profile_image, :fill, 991, 600, format: 'jpeg', fallback: "/images/no_image.jpg", class: "img-responsive" %>
 		</div>
-		<div class="col-md-5 ">
+		<div class="col-md-5 margin-top-20">
+			<h4 class="sports-tag"><%= @team.sport.name %></h4>
 			<h2><%= @team.name%></h2>
-			<h4>スポーツ: <%= @team.sport.name %></h4>
-			<h4>活動場所: <%= @team.address %></h4>
-			<h4>管理者: <%= @organizer.name %></h4>
+			<h4><i class="material-icons">room</i> <%= @team.address %></h4>
+				
+					<a href="https://www.google.com/maps/search/?api=1&query=centurylink+field">地図アプリで見る</a>
+				
+			<h4><i class="material-icons">account_box</i> <%= @organizer.name %></h4>
 			<div class=" row d-flex align-items-end col-xs-12">
 				<h3 class="pull-right">
 					<% if (user_signed_in?) %>

@@ -13,7 +13,7 @@ class User::FavoritesController < User::UserBase
 				format.js { render :delete }
 			end
 		else
-			@favorite = current_user.favorites.create(team_id: params[:team_id]), notice: "お気に入りに追加しました"
+			@favorite = current_user.favorites.create(team_id: params[:team_id])
 			respond_to do |format|
 				format.js { render :new }
 			end

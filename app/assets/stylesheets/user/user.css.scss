@@ -18,6 +18,7 @@
   border-radius: 5%;
 }
 
+
 //date-selectを縦並びから横並びに
 .datetime-select {
   width: auto;
@@ -67,7 +68,7 @@
 
 .nav > li {
     padding: 15px;
-  }
+}
 
 //google maps api
 #map {
@@ -130,7 +131,7 @@
 
 .navbar .image {
     width: 65px;
-  }
+}
 
 .header-border {
   border-bottom: 1px solid #e7e7e7;
@@ -154,7 +155,7 @@
 //manageページ
 .sidebar-navbar-collapse {
     margin-bottom: 20px;
-  }
+}
 
 .navbar-default .navbar-collapse {
     border-color: white;
@@ -184,6 +185,7 @@ footer {
 .show {
   margin-top: 20px;
 }
+
 
 //modal
 .sign_modal_wrapper {
@@ -374,7 +376,6 @@ footer {
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
   }
-
 }
 
 //タブレット以上
@@ -459,23 +460,7 @@ footer {
   .margin-top-10 {
     margin-top: 10px;
   }
-
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .navbar-default {
     background: white;
@@ -491,46 +476,45 @@ footer {
 
 
 .navbar-default .navbar-nav > li > a {
-    color: black;
-    font-size: 13px;
+  color: black;
+  font-size: 13px;
 }
 
 .navbar-default .navbar-brand {
-    color: black;
-    margin-top: 10px;
-
+  color: black;
+  margin-top: 10px;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #000;
+  background-color: #000;
 }
 
 //navbar-deviseのcss
 .navbar-devise {
-    background: #fff;
-    border-color: #fff;
-    z-index: 10;
+  background: #fff;
+  border-color: #fff;
+  z-index: 10;
 }
 
 .navbar-devise .navbar-nav > li > a {
-    color: #222222;
-    font-size: 13px;
+  color: #222222;
+  font-size: 13px;
 }
 
 .navbar-devise .navbar-brand {
-    color: #222222;
+  color: #222222;
 }
 
 // トップページのnavbarのドロップダウンがクリックされた時
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: transparent;
-    color: #555;
+  background-color: transparent;
+  color: #555;
 }
 
 //facebookボタン
 .btn-facebook {
-    color: #fff;
-    background-color: #4c66a4;
+  color: #fff;
+  background-color: #4c66a4;
 }
 
 // row-space類
@@ -598,7 +582,7 @@ footer {
 .profile-full {
         width: 100% !important;
         height: 180px !important;
-    }    
+  } 
 }
 
 .btn-full {
@@ -986,13 +970,13 @@ td .number-field {
 .teams .practice-box {
   flex: 0 0 100%;
   position: relative;
-  
 }
 .teams .practice-box::before {
   content: '';
   display: block;
   padding-top: 100%;
 }
+
 .teams .practice-box div {
   position: absolute;
   top: 0;
@@ -1046,14 +1030,14 @@ td .number-field {
 
 
 .btn-block {
-  width :60%;
+  width : 60%;
   margin: 20px auto 0px auto;
 }
 
 
 
 ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active {
-    background-color: #d9534f;
+  background-color: #d9534f;
 }
 
 
